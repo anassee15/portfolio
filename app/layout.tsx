@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import ScrollProgress from "@/components/ScrollProgress";
 import Navigation from "@/components/Navigation";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <ScrollProgress />
           <Navigation />
           {children}
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
