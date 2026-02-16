@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   title: "Anasse El Boudiri - Portfolio",
   description:
     "EPFL Data Science student building agentic AI systems for NLP, vision, and high-performance ML.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
