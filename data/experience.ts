@@ -12,7 +12,7 @@ export const experience: ExperienceItem[] = [
   {
     role: "AI Applied Scientist Intern",
     company: "Groupe Mutuel",
-    logo: "🏥",
+    logo: "/images/groupemutuel.png",
     location: "Lausanne, Switzerland",
     period: "08/2025 – 06/2026",
     points: [
@@ -25,7 +25,7 @@ export const experience: ExperienceItem[] = [
   {
     role: "Software Engineer",
     company: "Scientific Visual",
-    logo: "🔬",
+    logo: "/images/sv.png",
     location: "Lausanne, Switzerland",
     period: "01/2025 – 02/2025",
     points: [
@@ -36,7 +36,7 @@ export const experience: ExperienceItem[] = [
   {
     role: "ML Research Assistant",
     company: "IDIAP",
-    logo: "🎓",
+    logo: "/images/idiap.png",
     location: "Lausanne, Switzerland",
     period: "09/2024 – 01/2025",
     points: [

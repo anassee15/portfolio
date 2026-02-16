@@ -14,7 +14,7 @@ export const education: EducationItem[] = [
     school: "Ecole Polytechnique Fédérale de Lausanne (EPFL)",
     degree: "Master in Data Science",
     grade: "5.4/6",
-    logo: "🎓",
+    logo: "/images/epfl4.png",
     location: "Lausanne, Switzerland",
     period: "2023 – 2026",
     coursework: [
@@ -29,7 +29,7 @@ export const education: EducationItem[] = [
     school: "University of Applied Science",
     degree: "Bachelor in Computer Science and Communication Systems",
     grade: "5.6/6",
-    logo: "📚",
+    logo: "/images/hes.png",
     location: "Neuchatel, Switzerland",
     period: "2020 – 2023",
     coursework: [

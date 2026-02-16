@@ -5,8 +5,13 @@ import { education } from "@/data/education";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function EducationSection() {
+  const isImageUrl = (logo: string) => {
+    return logo.startsWith('http') || logo.startsWith('/');
+  };
+
   return (
     <div>
       <motion.div
@@ -44,11 +49,24 @@ export default function EducationSection() {
                 <CardHeader className="relative flex flex-row items-start gap-4">
                   {edu.logo && (
                     <motion.div
-                      className="text-5xl shrink-0"
+                      className="shrink-0 flex items-center justify-center"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      {edu.logo}
+                      {isImageUrl(edu.logo) ? (
+                        <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden bg-white p-2">
+                          <Image
+                            src={edu.logo}
+                            alt={`${edu.school} logo`}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <div className="text-4xl md:text-5xl">
+                          {edu.logo}
+                        </div>
+                      )}
                     </motion.div>
                   )}
                   <div className="flex-1">
