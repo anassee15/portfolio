@@ -44,16 +44,16 @@ export default function ContactSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-3xl font-bold">
+        <h2 className="text-2xl md:text-3xl font-bold">
           <span className="gradient-text">Let&apos;s Connect</span>
         </h2>
-        <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-400 leading-relaxed">
+        <p className="mt-3 max-w-2xl text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
           I&apos;m open to master&apos;s thesis projects, research collaborations, and
           internships in applied AI, NLP, and agentic systems starting August 2026.
         </p>
       </motion.div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
+      <div className="mt-8 md:mt-12 grid gap-4 md:gap-6 sm:grid-cols-2 md:grid-cols-3">
         {/* Contact Method Cards */}
         {contactItems.map((item, index) => (
           <motion.div

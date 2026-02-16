@@ -15,17 +15,17 @@ export default function ProjectsSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-3xl font-bold">
+        <h2 className="text-2xl md:text-3xl font-bold">
           <span className="gradient-text">Featured Projects</span>
         </h2>
-        <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-400">
+        <p className="mt-3 max-w-2xl text-sm md:text-base text-slate-600 dark:text-slate-400">
           A selection of projects spanning agentic AI, NLP, computer vision, and
           robotics-style systems. Each project demonstrates production-grade
           engineering and research thinking.
         </p>
       </motion.div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
+      <div className="mt-8 md:mt-12 grid gap-4 md:gap-6 lg:grid-cols-2">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}

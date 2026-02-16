@@ -29,7 +29,7 @@ export default function HomePage() {
 
       <motion.section
         id="projects"
-        className="mx-auto max-w-6xl px-6 py-28"
+        className="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-28"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
@@ -41,7 +41,7 @@ export default function HomePage() {
 
       <motion.section
         id="experience"
-        className="mx-auto max-w-6xl px-6 py-28"
+        className="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-28"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
@@ -53,7 +53,7 @@ export default function HomePage() {
 
       <motion.section
         id="education"
-        className="mx-auto max-w-6xl px-6 py-28"
+        className="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-28"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
@@ -65,7 +65,7 @@ export default function HomePage() {
 
       <motion.section
         id="skills"
-        className="mx-auto max-w-6xl px-6 py-28"
+        className="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-28"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
@@ -77,7 +77,7 @@ export default function HomePage() {
 
       <motion.section
         id="contact"
-        className="mx-auto max-w-6xl px-6 py-28 pb-40"
+        className="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-28 pb-24 md:pb-40"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}

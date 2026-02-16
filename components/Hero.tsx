@@ -69,14 +69,14 @@ export default function Hero() {
 
       <motion.div
         style={{ opacity, scale, y }}
-        className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-10 px-6 py-20 text-center"
+        className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-6 md:gap-10 px-4 md:px-6 py-16 md:py-20 text-center"
       >
         {/* Floating badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-          className="glass float inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-green-600 dark:text-green-400 shadow-lg shadow-green-500/10"
+          className="glass float inline-flex items-center gap-2 rounded-full px-3 md:px-4 py-1.5 md:py-2 text-xs font-medium text-green-600 dark:text-green-400 shadow-lg shadow-green-500/10"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
@@ -89,9 +89,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const, delay: 0.2 }}
-          className="space-y-6"
+          className="space-y-4 md:space-y-6"
         >
-          <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-7xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
             <motion.span
               className="gradient-text inline-block"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -102,14 +102,14 @@ export default function Hero() {
             </motion.span>
           </h1>
 
-          <div className="flex min-h-[3rem] items-center justify-center">
+          <div className="flex min-h-[2.5rem] md:min-h-[3rem] items-center justify-center">
             <motion.p
               key={roleIndex}
               initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-              className="text-xl font-medium text-slate-700 dark:text-slate-300 md:text-2xl"
+              className="text-lg sm:text-xl md:text-2xl font-medium text-slate-700 dark:text-slate-300"
             >
               {roles[roleIndex]}
             </motion.p>

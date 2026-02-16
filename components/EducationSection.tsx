@@ -15,16 +15,16 @@ export default function EducationSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-3xl font-bold">
+        <h2 className="text-2xl md:text-3xl font-bold">
           <span className="gradient-text">Education</span>
         </h2>
-        <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-400">
+        <p className="mt-3 max-w-2xl text-sm md:text-base text-slate-600 dark:text-slate-400">
           Academic background in data science, machine learning, and computer
           systems.
         </p>
       </motion.div>
 
-      <div className="mt-12 space-y-6">
+      <div className="mt-8 md:mt-12 space-y-4 md:space-y-6">
         {education.map((edu, index) => (
           <motion.div
             key={edu.school + edu.degree}

@@ -8,15 +8,15 @@ import { motion } from "framer-motion";
 export default function ExperienceSection() {
   return (
     <div>
-      <h2 className="text-3xl font-bold">
+      <h2 className="text-2xl md:text-3xl font-bold">
         <span className="gradient-text">Experience</span>
       </h2>
-      <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-400">
+      <p className="mt-3 max-w-2xl text-sm md:text-base text-slate-600 dark:text-slate-400">
         Roles where I applied AI, NLP, and high-performance computing to
         real-world problems.
       </p>
 
-      <div className="mt-12 space-y-6">
+      <div className="mt-8 md:mt-12 space-y-4 md:space-y-6">
         {experience.map((exp, index) => (
           <motion.div
             key={exp.company + exp.role}
