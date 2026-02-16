@@ -7,10 +7,10 @@ import AgentGraphCanvas from "./three/AgentGraphCanvas";
 import { useEffect, useState } from "react";
 
 const roles = [
-  "Agentic AI Engineer",
-  "NLP Specialist",
-  "Deep Learning Researcher",
-  "MLOps Engineer",
+  "EPFL Student",
+  "Computer Science Engineer",
+  "Data Engineer",
+  "AI Researcher",
 ];
 
 export default function Hero() {
@@ -76,13 +76,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-          className="glass float inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-cyan-600 dark:text-cyan-300 shadow-lg shadow-cyan-500/10"
+          className="glass float inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-green-600 dark:text-green-400 shadow-lg shadow-green-500/10"
         >
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500"></span>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
           </span>
-          Available for Master&apos;s Thesis · August 2026
+          Available for Master&apos;s Thesis
         </motion.div>
 
         <motion.div
