@@ -75,7 +75,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
           className="glass float inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-cyan-600 dark:text-cyan-300 shadow-lg shadow-cyan-500/10"
         >
           <span className="relative flex h-2 w-2">
@@ -88,7 +88,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const, delay: 0.2 }}
           className="space-y-6"
         >
           <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-7xl">
@@ -96,7 +96,7 @@ export default function Hero() {
               className="gradient-text inline-block"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const, delay: 0.4 }}
             >
               Anasse El Boudiri
             </motion.span>
@@ -108,7 +108,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
               className="text-xl font-medium text-slate-700 dark:text-slate-300 md:text-2xl"
             >
               {roles[roleIndex]}

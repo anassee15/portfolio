@@ -64,7 +64,7 @@ export default function ContactSection() {
             transition={{
               duration: 0.6,
               delay: 0.2 + index * 0.1,
-              ease: [0.16, 1, 0.3, 1],
+              ease: [0.16, 1, 0.3, 1] as const,
             }}
           >
             <motion.div

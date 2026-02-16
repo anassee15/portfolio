@@ -129,7 +129,7 @@ export default function SkillsSection() {
               transition={{
                 duration: 0.6,
                 delay: categoryIndex * 0.1,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.16, 1, 0.3, 1] as const,
               }}
             >
               <motion.div
