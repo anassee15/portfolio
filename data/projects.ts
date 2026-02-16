@@ -1,0 +1,98 @@
+// data/projects.ts
+export type ProjectTag =
+  | "Agentic AI"
+  | "RAG"
+  | "LLM"
+  | "NLP"
+  | "VLM"
+  | "Vision"
+  | "Robotics"
+  | "Medical"
+  | "HPC";
+
+export interface Project {
+  title: string;
+  subtitle?: string;
+  company?: string;
+  logo?: string; // Company logo URL or emoji
+  tags: ProjectTag[];
+  period?: string;
+  summary: string;
+  highlights: string[];
+  techStack: string[];
+  links?: {
+    github?: string;
+    demo?: string;
+    paper?: string;
+  };
+}
+
+export const projects: Project[] = [
+  {
+    title: "Production Agentic LLM-RAG System",
+    subtitle: "Groupe Mutuel · AI Applied Scientist Intern",
+    company: "Groupe Mutuel",
+    logo: "🏥",
+    tags: ["Agentic AI", "RAG", "LLM"],
+    period: "08/2025 – 06/2026",
+    summary:
+      "Deployed an agentic LLM-RAG system in production for an insurance company, serving 600k+ users with integrated evaluation and observability.",
+    highlights: [
+      "Designed and deployed an agentic RAG architecture tailored to insurance workflows.",
+      "Implemented an evaluation framework to monitor quality and guide model/prompt iteration.",
+      "Set up Langfuse-based observability for faster debugging and monitoring of agent behavior.",
+    ],
+    techStack: ["Python", "LLMs", "RAG", "Langfuse", "Azure"],
+  },
+  {
+    title: "Vision Voyager",
+    subtitle: "Autonomous Minecraft Agent with VLMs",
+    logo: "🎮",
+    tags: ["Agentic AI", "VLM", "Robotics", "Vision"],
+    summary:
+      "Extended the Voyager autonomous Minecraft agent to integrate open-source vision-language models for multimodal perception and planning.",
+    highlights: [
+      "Modified Voyager's architecture to use Mistral Small and Gemma 3 for visual observations.",
+      "Designed prompts and tools enabling code generation conditioned on visual context.",
+      "Evaluated VLMs for latency and reliability in long-horizon, open-ended tasks.",
+    ],
+    techStack: ["Python", "LLMs", "VLMs", "Minecraft"],
+  },
+  {
+    title: "Human Spinal Cord 3D Reconstruction",
+    logo: "🧠",
+    tags: ["Medical", "Vision"],
+    summary:
+      "Performed 3D MRI segmentation to identify and locate spinal roots using nnU-Net and HardNet architectures.",
+    highlights: [
+      "Preprocessed volumetric MRI data and curated training datasets for 3D segmentation.",
+      "Trained nnU-Net and HardNet models for accurate spinal root localization.",
+      "Contributed to a pipeline supporting clinical research on spinal cord anatomy.",
+    ],
+    techStack: ["Python", "PyTorch", "nnU-Net", "HardNet", "Medical Imaging"],
+  },
+  {
+    title: "Vine Mildew Prediction on JetRacer",
+    logo: "🍇",
+    tags: ["Vision", "Robotics"],
+    summary:
+      "Implemented CNN-based image classification, detection, and segmentation for real-time vine disease detection on NVIDIA JetRacer.",
+    highlights: [
+      "Deployed vision models on embedded hardware for real-time vineyard disease monitoring.",
+      "Built an end-to-end pipeline from data collection to on-device inference.",
+    ],
+    techStack: ["Python", "CNNs", "JetRacer", "Computer Vision"],
+  },
+  {
+    title: "Sentimental Review",
+    logo: "🎬",
+    tags: ["NLP", "LLM"],
+    summary:
+      "Analyzed movie impressions by scraping Twitter and IMDb, applying sentiment analysis with BERT to understand audience reactions.",
+    highlights: [
+      "Collected and cleaned social media and web data via APIs and scraping.",
+      "Applied transformer-based sentiment analysis for fine-grained opinion mining.",
+    ],
+    techStack: ["Python", "BERT", "Twitter API", "Scraping"],
+  },
+];
