@@ -8,7 +8,14 @@ export type ProjectTag =
   | "Vision"
   | "Robotics"
   | "Medical"
-  | "HPC";
+  | "HPC"
+  | "Open-Source LMs"
+  | "Transformers"
+  | "3D Image Segmentation"
+  | "Supervised Fine-tuning"
+  | "Direct Preference Optimization"
+  | "Quantization";
+
 
 export interface Project {
   title: string;
@@ -24,13 +31,14 @@ export interface Project {
     github?: string;
     demo?: string;
     paper?: string;
+    report?: string;
   };
 }
 
 export const projects: Project[] = [
   {
-    title: "Production Agentic LLM-RAG System",
-    subtitle: "Groupe Mutuel · AI Applied Scientist Intern",
+    title: "EVA: Virtual Assistant Agent for Insurance",
+    subtitle: "Production Agentic LLM-RAG System",
     company: "Groupe Mutuel",
     logo: "🏥",
     tags: ["Agentic AI", "RAG", "LLM"],
@@ -45,10 +53,27 @@ export const projects: Project[] = [
     techStack: ["Python", "LLMs", "RAG", "Langfuse", "Azure"],
   },
   {
+    title: "Educational STEM Assistant",
+    subtitle: "Educational AI for STEM Tutoring",
+    logo: "📚",
+    tags: ["LLM", "Supervised Fine-tuning", "Direct Preference Optimization", "RAG", "Quantization", "HPC"],
+    summary:
+      "Extended the Voyager autonomous Minecraft agent to integrate open-source vision-language models for multimodal perception and planning.",
+    highlights: [
+      "Consolidated 24K STEM MCQ datasets (STEMQ, MATH, etc.) for SFT and curated annotated triplets for DPO. Integrated 62K Wikipedia and arXiv STEM documents with 10K synthetic Q\&A pairs for RAG and Retrieval-Augmented Fine-Tuning (RAFT)",
+      "Aligned model with student preferences using DPO (73% reward accuracy) on annotated triplets; integrated RAG with fine-tuned GTE-ModernBERT retriever on 62k Wikipedia STEM docs.",
+      "Optimized for deployment via QLoRA (4-bit quantization, LoRA r=16 on all linear layers), halving model size (506MB) while maintaining/improving accuracy and reducing VRAM (2.81GB).",
+    ],
+    techStack: ["Python", "LLMs", "HPC", "Pytorch"],
+    links: {
+        report: "/report/stem-assistant-report.pdf",
+    }
+  },
+  {
     title: "Vision Voyager",
     subtitle: "Autonomous Minecraft Agent with VLMs",
     logo: "🎮",
-    tags: ["Agentic AI", "VLM", "Robotics", "Vision"],
+    tags: ["Agentic AI", "VLM", "Open-Source LMs"],
     summary:
       "Extended the Voyager autonomous Minecraft agent to integrate open-source vision-language models for multimodal perception and planning.",
     highlights: [
@@ -57,19 +82,27 @@ export const projects: Project[] = [
       "Evaluated VLMs for latency and reliability in long-horizon, open-ended tasks.",
     ],
     techStack: ["Python", "LLMs", "VLMs", "Minecraft"],
+    links: {
+        github: "https://github.com/anassee15/vision-voyager",
+        report: "/report/vision-voyager-report.pdf",
+    }
   },
+
   {
     title: "Human Spinal Cord 3D Reconstruction",
     logo: "🧠",
-    tags: ["Medical", "Vision"],
+    tags: ["Medical", "Vision", "3D Image Segmentation", "HPC"],
     summary:
       "Performed 3D MRI segmentation to identify and locate spinal roots using nnU-Net and HardNet architectures.",
     highlights: [
       "Preprocessed volumetric MRI data and curated training datasets for 3D segmentation.",
-      "Trained nnU-Net and HardNet models for accurate spinal root localization.",
+      "Trained nnU-Net and HardNet models for accurate spinal root localization on HPC architectures.",
       "Contributed to a pipeline supporting clinical research on spinal cord anatomy.",
     ],
     techStack: ["Python", "PyTorch", "nnU-Net", "HardNet", "Medical Imaging"],
+    links: {
+        report: "/report/spinal-cord-report.pdf",
+    }
   },
   {
     title: "Vine Mildew Prediction on JetRacer",
@@ -86,7 +119,7 @@ export const projects: Project[] = [
   {
     title: "Sentimental Review",
     logo: "🎬",
-    tags: ["NLP", "LLM"],
+    tags: ["NLP", "Transformers"],
     summary:
       "Analyzed movie impressions by scraping Twitter and IMDb, applying sentiment analysis with BERT to understand audience reactions.",
     highlights: [

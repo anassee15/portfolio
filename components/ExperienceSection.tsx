@@ -30,8 +30,8 @@ export default function ExperienceSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <Card className="group border-slate-300/80 dark:border-slate-800/50 bg-white/80 dark:bg-slate-900/70 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-cyan-600/40 dark:hover:border-cyan-500/30 hover:bg-white dark:hover:bg-slate-900/90 hover:shadow-xl hover:shadow-cyan-500/10">
-              <CardHeader className="flex flex-row items-start gap-4">
+            <Card className="group relative shimmer card-3d border-slate-300/80 dark:border-slate-800/50 bg-white/80 dark:bg-slate-900/70 backdrop-blur-xl transition-all duration-500 hover:border-cyan-600/60 dark:hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/20">
+              <CardHeader className="flex flex-row items-start gap-4 relative z-10">
                 {exp.logo && (
                   <motion.div
                     className="shrink-0 flex items-center justify-center"
@@ -68,7 +68,7 @@ export default function ExperienceSection() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <ul className="list-disc space-y-2 pl-5 text-base text-slate-700 dark:text-slate-300 leading-relaxed">
                   {exp.points.map((p) => (
                     <motion.li

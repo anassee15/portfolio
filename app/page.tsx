@@ -3,6 +3,7 @@
 
 import { motion } from "framer-motion";
 import Hero from "@/components/Hero";
+import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
@@ -24,8 +25,20 @@ const sectionVariants = {
 
 export default function HomePage() {
   return (
-    <main id="top" className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-100">
+    <main id="top" className="relative min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-100">
       <Hero />
+
+      <motion.section
+        id="about"
+        className="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-28"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        variants={sectionVariants}
+        custom={0}
+      >
+        <AboutSection />
+      </motion.section>
 
       <motion.section
         id="projects"

@@ -124,3 +124,47 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.2) 30%,
+    rgba(168, 85, 247, 0.2) 50%,
+    rgba(34, 211, 238, 0.2) 70%,
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shimmer:hover::before {
+  opacity: 1;
+}
+
+/* 3D card tilt effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d:hover {
+  transform: perspective(1200px) rotateX(3deg) rotateY(-3deg) translateZ(10px);
+}

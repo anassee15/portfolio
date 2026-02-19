@@ -2,7 +2,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
@@ -14,7 +14,44 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
+  useEffect(() => {
+    const sections = ["top", "about", "projects", "experience", "education", "skills", "contact"];
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(`#${entry.target.id}`);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
+
   const navItems = [
+    { href: "#about", label: "About" },
     { href: "#projects", label: "Projects" },
     { href: "#experience", label: "Experience" },
     { href: "#education", label: "Education" },

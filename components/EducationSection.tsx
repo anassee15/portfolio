@@ -42,11 +42,11 @@ export default function EducationSection() {
               whileHover={{ scale: 1.02, y: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <Card className="group relative overflow-hidden border-slate-300/80 dark:border-slate-800/50 bg-white dark:bg-slate-900/70 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/40 dark:hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10">
+              <Card className="group relative shimmer card-3d overflow-hidden border-slate-300/80 dark:border-slate-800/50 bg-white dark:bg-slate-900/70 backdrop-blur-xl transition-all duration-500 hover:border-purple-500/60 dark:hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/20">
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                <CardHeader className="relative flex flex-row items-start gap-4">
+                <CardHeader className="relative flex flex-row items-start gap-4 z-10">
                   {edu.logo && (
                     <motion.div
                       className="shrink-0 flex items-center justify-center"
@@ -102,7 +102,7 @@ export default function EducationSection() {
                 </CardHeader>
 
                 {edu.coursework && edu.coursework.length > 0 && (
-                  <CardContent className="relative">
+                  <CardContent className="relative z-10">
                     <p className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
                       Coursework
                     </p>

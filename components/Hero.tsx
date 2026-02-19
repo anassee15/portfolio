@@ -3,8 +3,8 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import TypingAnimation from "./TypingAnimation";
 import AgentGraphCanvas from "./three/AgentGraphCanvas";
-import { useEffect, useState } from "react";
 
 const roles = [
   "EPFL Student",
@@ -19,27 +19,18 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
   const y = useTransform(scrollYProgress, [0, 0.3], [0, 50]);
 
-  const [roleIndex, setRoleIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Animated grid background */}
-      <div className="pointer-events-none absolute inset-0 grid-bg opacity-30" />
-
-      {/* 3D Background */}
-      <div className="pointer-events-none absolute inset-0 opacity-50">
+      {/* 3D Agent Graph Background */}
+      <div className="absolute inset-0 opacity-50">
         <AgentGraphCanvas />
       </div>
 
+      {/* Grid background overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+
       {/* Radial gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-transparent via-slate-50/50 to-slate-50 dark:via-[#020617]/50 dark:to-[#020617]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-transparent via-slate-50/80 to-slate-50 dark:via-[#020617]/80 dark:to-[#020617]" />
 
       {/* Animated floating orbs */}
       <motion.div
@@ -103,16 +94,10 @@ export default function Hero() {
           </h1>
 
           <div className="flex min-h-[2.5rem] md:min-h-[3rem] items-center justify-center">
-            <motion.p
-              key={roleIndex}
-              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-              className="text-lg sm:text-xl md:text-2xl font-medium text-slate-700 dark:text-slate-300"
-            >
-              {roles[roleIndex]}
-            </motion.p>
+            <TypingAnimation
+              texts={roles}
+              className="text-lg sm:text-xl md:text-2xl font-medium"
+            />
           </div>
 
           <motion.p
@@ -186,7 +171,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-18 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
