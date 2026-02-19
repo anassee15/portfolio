@@ -36,11 +36,11 @@ export default function EducationSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.9, delay: index * 0.2 }}
           >
             <motion.div
               whileHover={{ scale: 1.02, y: -3 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              transition={{ type: "spring", stiffness: 200, damping: 25 }}
             >
               <Card className="group relative shimmer card-3d overflow-hidden border-slate-300/80 dark:border-slate-800/50 bg-white dark:bg-slate-900/70 backdrop-blur-xl transition-all duration-500 hover:border-purple-500/60 dark:hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/20">
                 {/* Gradient overlay */}
@@ -51,7 +51,7 @@ export default function EducationSection() {
                     <motion.div
                       className="shrink-0 flex items-center justify-center"
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
                     >
                       {isImageUrl(edu.logo) ? (
                         <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden bg-white p-2">
@@ -83,7 +83,7 @@ export default function EducationSection() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.3, delay: 0.2 }}
+                            transition={{ duration: 0.4, delay: 0.3 }}
                           >
                             <Badge
                               variant="outline"
@@ -114,8 +114,8 @@ export default function EducationSection() {
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
                           transition={{
-                            duration: 0.3,
-                            delay: 0.1 + courseIndex * 0.05,
+                            duration: 0.4,
+                            delay: 0.2 + courseIndex * 0.08,
                           }}
                           whileHover={{ scale: 1.05, y: -2 }}
                         >
@@ -139,7 +139,7 @@ export default function EducationSection() {
                     opacity: [0.3, 0.5, 0.3],
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
