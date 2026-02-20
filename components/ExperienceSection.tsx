@@ -17,8 +17,7 @@ export default function ExperienceSection() {
         <span className="gradient-text">Experience</span>
       </h2>
       <p className="mt-3 max-w-2xl text-sm md:text-base text-slate-600 dark:text-slate-400">
-        Roles where I applied AI, NLP, and high-performance computing to
-        real-world problems.
+        Roles where I applied AI, NLP, and high-performance computing to real-world problems.
       </p>
 
       <div className="mt-8 md:mt-12 space-y-4 md:space-y-6">
@@ -28,7 +27,7 @@ export default function ExperienceSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.9, delay: index * 0.2 }}
           >
             <Card className="group relative shimmer card-3d border-slate-300/80 dark:border-slate-800/50 bg-white/80 dark:bg-slate-900/70 backdrop-blur-xl transition-all duration-500 hover:border-cyan-600/60 dark:hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/20">
               <CardHeader className="flex flex-row items-start gap-4 relative z-10">
@@ -36,7 +35,7 @@ export default function ExperienceSection() {
                   <motion.div
                     className="shrink-0 flex items-center justify-center"
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
                   >
                     {isImageUrl(exp.logo) ? (
                       <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden bg-white p-2">

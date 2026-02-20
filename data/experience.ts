@@ -20,6 +20,7 @@ export const experience: ExperienceItem[] = [
       "Implemented an evaluation framework to improve AI model quality and development workflows.",
       "Conducted research on agentic systems and fine-tuned small language models.",
       "Deployed a production-ready LLM observability system using Langfuse.",
+      "Setup of an ETL pipeline in Databricks for processing and analyzing user interactions with the AI system.",
     ],
   },
   {

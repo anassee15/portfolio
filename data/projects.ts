@@ -2,6 +2,7 @@
 export type ProjectTag =
   | "Agentic AI"
   | "RAG"
+  | "CNN"
   | "LLM"
   | "NLP"
   | "VLM"
@@ -12,8 +13,8 @@ export type ProjectTag =
   | "Open-Source LMs"
   | "Transformers"
   | "3D Image Segmentation"
-  | "Supervised Fine-tuning"
-  | "Direct Preference Optimization"
+  | "SFT"
+  | "DPO"
   | "Quantization";
 
 
@@ -41,14 +42,15 @@ export const projects: Project[] = [
     subtitle: "Production Agentic LLM-RAG System",
     company: "Groupe Mutuel",
     logo: "🏥",
-    tags: ["Agentic AI", "RAG", "LLM"],
-    period: "08/2025 – 06/2026",
+    tags: ["Agentic AI", "RAG", "LLM", "HPC"],
     summary:
-      "Deployed an agentic LLM-RAG system in production for an insurance company, serving 600k+ users with integrated evaluation and observability.",
+      "EVA is a chatbot available 24/7 to policyholders, answering coverage-related questions and guiding users through the mobile app journey.",
     highlights: [
       "Designed and deployed an agentic RAG architecture tailored to insurance workflows.",
       "Implemented an evaluation framework to monitor quality and guide model/prompt iteration.",
       "Set up Langfuse-based observability for faster debugging and monitoring of agent behavior.",
+      "Conducted research on agentic systems and fine-tuned small language models for comparison with larger models.",
+      "Usage of CI/CD pipelines and Azure services for scalable deployment and maintenance of the system.",
     ],
     techStack: ["Python", "LLMs", "RAG", "Langfuse", "Azure"],
   },
@@ -56,7 +58,7 @@ export const projects: Project[] = [
     title: "Educational STEM Assistant",
     subtitle: "Educational AI for STEM Tutoring",
     logo: "📚",
-    tags: ["LLM", "Supervised Fine-tuning", "Direct Preference Optimization", "RAG", "Quantization", "HPC"],
+    tags: ["LLM", "SFT", "DPO", "RAG", "Quantization", "HPC"],
     summary:
       "Extended the Voyager autonomous Minecraft agent to integrate open-source vision-language models for multimodal perception and planning.",
     highlights: [
@@ -73,7 +75,7 @@ export const projects: Project[] = [
     title: "Vision Voyager",
     subtitle: "Autonomous Minecraft Agent with VLMs",
     logo: "🎮",
-    tags: ["Agentic AI", "VLM", "Open-Source LMs"],
+    tags: ["Agentic AI", "VLM", "Open-Source LMs", "HPC"],
     summary:
       "Extended the Voyager autonomous Minecraft agent to integrate open-source vision-language models for multimodal perception and planning.",
     highlights: [
@@ -107,7 +109,7 @@ export const projects: Project[] = [
   {
     title: "Vine Mildew Prediction on JetRacer",
     logo: "🍇",
-    tags: ["Vision", "Robotics"],
+    tags: ["CNN", "Vision", "Robotics"],
     summary:
       "Implemented CNN-based image classification, detection, and segmentation for real-time vine disease detection on NVIDIA JetRacer.",
     highlights: [

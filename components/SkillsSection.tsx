@@ -71,6 +71,8 @@ export default function SkillsSection() {
         hover: "hover:bg-cyan-500/20 hover:border-cyan-500/60",
         glow: "hover:shadow-cyan-500/20",
         gradient: "from-cyan-500/5 to-transparent",
+        cardHover: "group-hover:border-cyan-500/60",
+        titleHover: "group-hover:text-cyan-600 dark:group-hover:text-cyan-400",
       },
       purple: {
         border: "border-purple-500/40",
@@ -79,6 +81,8 @@ export default function SkillsSection() {
         hover: "hover:bg-purple-500/20 hover:border-purple-500/60",
         glow: "hover:shadow-purple-500/20",
         gradient: "from-purple-500/5 to-transparent",
+        cardHover: "group-hover:border-purple-500/60",
+        titleHover: "group-hover:text-purple-600 dark:group-hover:text-purple-400",
       },
       orange: {
         border: "border-orange-500/40",
@@ -87,6 +91,8 @@ export default function SkillsSection() {
         hover: "hover:bg-orange-500/20 hover:border-orange-500/60",
         glow: "hover:shadow-orange-500/20",
         gradient: "from-orange-500/5 to-transparent",
+        cardHover: "group-hover:border-orange-500/60",
+        titleHover: "group-hover:text-orange-600 dark:group-hover:text-orange-400",
       },
       slate: {
         border: "border-slate-500/40",
@@ -95,6 +101,8 @@ export default function SkillsSection() {
         hover: "hover:bg-slate-500/20 hover:border-slate-500/60",
         glow: "hover:shadow-slate-500/20",
         gradient: "from-slate-500/5 to-transparent",
+        cardHover: "group-hover:border-slate-500/60",
+        titleHover: "group-hover:text-slate-600 dark:group-hover:text-slate-400",
       },
     };
     return colorMap[color as keyof typeof colorMap] || colorMap.cyan;
@@ -137,7 +145,7 @@ export default function SkillsSection() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <Card
-                  className={`group h-full border-slate-300/80 dark:border-slate-800/50 bg-white dark:bg-slate-900/70 backdrop-blur-xl transition-all duration-300 hover:border-${category.color}-500/50 hover:shadow-xl ${colors.glow} overflow-hidden relative`}
+                  className={`group h-full border-slate-300/80 dark:border-slate-800/50 bg-white dark:bg-slate-900/70 backdrop-blur-xl transition-all duration-300 ${colors.cardHover} hover:shadow-xl ${colors.glow} overflow-hidden relative`}
                 >
                   {/* Gradient overlay */}
                   <div
@@ -160,7 +168,7 @@ export default function SkillsSection() {
                       >
                         {category.icon}
                       </motion.div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      <h3 className={`text-xl font-bold text-slate-900 dark:text-slate-100 ${colors.titleHover} transition-colors`}>
                         {category.title}
                       </h3>
                     </motion.div>
