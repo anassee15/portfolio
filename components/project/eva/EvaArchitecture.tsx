@@ -1,4 +1,5 @@
 import { EvaBrain } from "@/components/ink/diagrams/EvaBrain";
+import { type Block, Card, Layer } from "./blocks";
 
 /**
  * EVA's architecture in four layers, after the Groupe Mutuel poster.
@@ -6,66 +7,36 @@ import { EvaBrain } from "@/components/ink/diagrams/EvaBrain";
  * Internal system names are replaced by generic ones; `mine` marks my own work.
  */
 
-type Block = { kicker: string; title: string; text: string; mine?: boolean };
-
 const CHANNEL: Block[] = [
-  { kicker: "channel", title: "Mobile app", text: "iOS and Android. Where 115,000 policyholders ask their questions." },
-  { kicker: "backend", title: "API", text: "FastAPI, async Python. Answers are streamed." },
+  { icon: "phone", kicker: "channel", title: "Mobile app", text: "iOS and Android. Where 115,000 policyholders ask their questions." },
+  { icon: "fastapi", kicker: "backend", title: "API", text: "FastAPI, async Python. Answers are streamed." },
 ];
 
 const BRAIN_LEFT: Block[] = [
-  { kicker: "reasoning", title: "LLMs", text: "GPT models on a public cloud. Every agent runs on them." },
-  { kicker: "knowledge", title: "Search index", text: "General terms, business rules, knowledge base." },
-  { kicker: "memory", title: "Object storage", text: "The history of every conversation." },
+  { icon: "openai", kicker: "reasoning", title: "LLMs", text: "GPT models on a public cloud. Every agent runs on them." },
+  { icon: "search", kicker: "knowledge", title: "Search index", text: "General terms, business rules, knowledge base." },
+  { icon: "archive", kicker: "memory", title: "Object storage", text: "The history of every conversation." },
 ];
 
 const BRAIN_RIGHT: Block[] = [
-  { kicker: "business system", title: "Policy API", text: "Deductible, plan, premiums, invoices." },
-  { kicker: "policyholder data", title: "Database", text: "The source of truth." },
+  { icon: "network", kicker: "business system", title: "Policy API", text: "Deductible, plan, premiums, invoices." },
+  { icon: "database", kicker: "policyholder data", title: "Database", text: "The source of truth." },
 ];
 
 const STEERING: Block[] = [
-  { kicker: "observability", title: "Langfuse", text: "Every LLM call, agent and tool traced, with cost and latency.", mine: true },
-  { kicker: "evaluation", title: "The harness", text: "Simulated policyholders, calibrated judges, pass^k. Gates feature rollouts.", mine: true },
-  { kicker: "data", title: "Databricks", text: "Nightly ETL of the traces; questions grouped by topic with BERTopic.", mine: true },
-  { kicker: "improvement", title: "Expert review", text: "Business experts review conversations and flag errors; dashboards in Power BI." },
+  { icon: "trace", kicker: "observability", title: "Langfuse", text: "Every LLM call, agent and tool traced, with cost and latency.", mine: true },
+  { icon: "clipboard", kicker: "evaluation", title: "The harness", text: "Simulated policyholders, calibrated judges, pass^k. Gates feature rollouts.", mine: true },
+  { icon: "databricks", kicker: "data", title: "Databricks", text: "Nightly ETL of the traces; questions grouped by topic with BERTopic.", mine: true },
+  { icon: "review", kicker: "improvement", title: "Expert review", text: "Business experts review conversations and flag errors; dashboards in Power BI." },
 ];
 
 const FOUNDATION: Block[] = [
-  { kicker: "runtime", title: "Kubernetes", text: "Everything above runs in containers, on a public cloud." },
-  { kicker: "delivery", title: "GitLab CI/CD", text: "Lint, types, tests, images. Dev → int → staging → prod, plus a preview per branch." },
-  { kicker: "health", title: "Golden questions", text: "A pod stays out of rotation until its latency is back under the threshold.", mine: true },
+  { icon: "kubernetes", kicker: "runtime", title: "Kubernetes", text: "Everything above runs in containers, on a public cloud." },
+  { icon: "gitlab", kicker: "delivery", title: "GitLab CI/CD", text: "Lint, types, tests, images. Dev → int → staging → prod, plus a preview per branch." },
+  { icon: "pulse", kicker: "health", title: "Golden questions", text: "A pod stays out of rotation until its latency is back under the threshold.", mine: true },
 ];
 
 const AGENT_ROLES = ["coverage", "therapists", "self-service", "contact", "info", "premiums", "offers"];
-
-function Card({ kicker, title, text, mine }: Block) {
-  return (
-    <div className={`border bg-paper px-3 py-2.5 ${mine ? "border-ball" : "border-rule"}`}>
-      <p className={`font-mono text-[10px] tracking-[0.06em] uppercase ${mine ? "text-ball-text" : "text-muted"}`}>
-        {mine && <span aria-hidden>● </span>}
-        {kicker}
-        {mine && <span className="sr-only"> (my work)</span>}
-      </p>
-      <p className="mt-0.5 text-sm leading-snug font-bold">{title}</p>
-      <p className="mt-0.5 text-xs leading-snug text-ink-2">{text}</p>
-    </div>
-  );
-}
-
-function Layer({ index, name, children }: { index: number; name: string; children: React.ReactNode }) {
-  return (
-    <section aria-label={name}>
-      <p className="meta mb-2 flex items-center gap-3 text-[11px] tracking-[0.06em] uppercase">
-        <span>
-          {index} · {name}
-        </span>
-        <span className="h-px flex-1 bg-rule" aria-hidden />
-      </p>
-      {children}
-    </section>
-  );
-}
 
 export function EvaArchitecture() {
   return (
