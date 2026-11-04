@@ -103,29 +103,32 @@ export function LineChart({ title, subtitle, xLabels, series, yTicks = [0, 0.25,
         ))}
       </svg>
 
-      <table className="sr-only">
-        <caption>{title}</caption>
-        <thead>
-          <tr>
-            <th scope="col">k</th>
-            {series.map((s) => (
-              <th key={s.name} scope="col">
-                {s.name}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {xLabels.map((label, i) => (
-            <tr key={label}>
-              <th scope="row">{label}</th>
+      {/* A table ignores the 1px width of sr-only, so a wrapper carries it. */}
+      <div className="sr-only">
+        <table>
+          <caption>{title}</caption>
+          <thead>
+            <tr>
+              <th scope="col">k</th>
               {series.map((s) => (
-                <td key={s.name}>{percent(s.values[i])}</td>
+                <th key={s.name} scope="col">
+                  {s.name}
+                </th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {xLabels.map((label, i) => (
+              <tr key={label}>
+                <th scope="row">{label}</th>
+                {series.map((s) => (
+                  <td key={s.name}>{percent(s.values[i])}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </figure>
   );
 }
