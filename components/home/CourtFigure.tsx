@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { PLAYS, Phase, type Play } from "@/components/three/play";
 import { useCssVariables, useInView, useMediaQuery, usePageLoaded, usePrefersReducedMotion, useWebGL } from "@/lib/hooks";
@@ -26,9 +26,11 @@ export function CourtFigure() {
   const [playIndex, setPlayIndex] = useState(0);
   const [sample, setSample] = useState(0);
   const [phase, setPhase] = useState(Phase.Scored);
+  const [sceneReady, setSceneReady] = useState(false);
+  const markSceneReady = useCallback(() => setSceneReady(true), []);
 
   const animated = webgl && !reducedMotion;
-  // Until the scene is mounted, the still frame stands in for it (and is what loads first).
+  // The scene mounts once the page has loaded and the court is near the viewport.
   const live = animated && near && loaded && colors !== null;
   const play = live ? PLAYS[playIndex] : STILL_PLAY;
   const nextPlay = () => setPlayIndex((i) => (i + 1) % PLAYS.length);
@@ -36,7 +38,9 @@ export function CourtFigure() {
   return (
     <figure className="min-w-0">
       <div ref={frame} role="img" aria-label={DESCRIPTION} className="relative aspect-[4/3] w-full bg-paper">
-        {live ? (
+        {/* The still frame stays underneath until the scene has drawn its first frame. */}
+        {!sceneReady && <StillCourt />}
+        {live && (
           <CourtScene
             colors={colors}
             play={play}
@@ -45,9 +49,8 @@ export function CourtFigure() {
             maxDpr={touch ? 1 : 1.5}
             onPhase={setPhase}
             onPlayEnd={nextPlay}
+            onReady={markSceneReady}
           />
-        ) : (
-          <StillCourt />
         )}
       </div>
       <figcaption className="mt-3 flex items-start justify-between gap-4">

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { createCourtFloor } from "./court-floor";
 import { createInkUniforms, createOutlineMaterial, createToneMaterial, updateInk } from "./ink-material";
 import {
@@ -30,6 +30,8 @@ type CourtSceneProps = {
   maxDpr: number;
   onPhase: (phase: Phase) => void;
   onPlayEnd: () => void;
+  /** Called once the shaders are compiled and the first frame is about to be drawn. */
+  onReady: () => void;
 };
 
 const DENOISE_SECONDS = 1.7;
@@ -101,7 +103,7 @@ function PlayerMesh({ assets, player, groupRef }: { assets: Assets; player: Play
   );
 }
 
-function Court({ colors, play, sample, labels, pointer, onPhase, onPlayEnd }: Omit<CourtSceneProps, "active" | "maxDpr"> & {
+function Court({ colors, play, sample, labels, pointer, onPhase, onPlayEnd }: Omit<CourtSceneProps, "active" | "maxDpr" | "onReady"> & {
   labels: LabelRefs;
   pointer: React.RefObject<{ x: number; y: number }>;
 }) {
@@ -253,9 +255,35 @@ function labelFor(player: Player, play: Play) {
   return play.agents[player.id] ?? null;
 }
 
-export default function CourtScene({ active, maxDpr, ...sceneProps }: CourtSceneProps) {
+/**
+ * Compiles every shader in the background before the first frame, so the first
+ * render doesn't block the main thread while the GPU links the programs.
+ */
+function WarmUp({ onReady }: { onReady: () => void }) {
+  const { gl, scene, camera } = useThree();
+  useEffect(() => {
+    let cancelled = false;
+    gl.compileAsync(scene, camera)
+      .then(() => {
+        if (!cancelled) onReady();
+      })
+      // If compiling fails (lost context), the still frame simply stays.
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [gl, scene, camera, onReady]);
+  return null;
+}
+
+export default function CourtScene({ active, maxDpr, onReady, ...sceneProps }: CourtSceneProps) {
   const pointer = useRef({ x: 0, y: 0 });
   const labels = useRef<(HTMLSpanElement | null)[]>([]);
+  const [compiled, setCompiled] = useState(false);
+  const handleReady = useCallback(() => {
+    setCompiled(true);
+    onReady();
+  }, [onReady]);
 
   return (
     <div
@@ -274,13 +302,14 @@ export default function CourtScene({ active, maxDpr, ...sceneProps }: CourtScene
     >
       <Canvas
         dpr={[1, maxDpr]}
-        frameloop={active ? "always" : "never"}
+        frameloop={active && compiled ? "always" : "never"}
         camera={{ fov: 30, near: 0.1, far: 100, position: [1.2, 7.2, 10.6] }}
         gl={{ antialias: true }}
         flat
         aria-hidden
       >
         <Court {...sceneProps} labels={labels} pointer={pointer} />
+        <WarmUp onReady={handleReady} />
       </Canvas>
 
       {PLAYERS.map((player, i) => {
