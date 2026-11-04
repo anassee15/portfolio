@@ -11,7 +11,7 @@ export function evaSlots(project: Project): CaseSlots {
   return {
     "the-system": {
       before: (
-        <div className="mb-6 max-w-[440px]">
+        <div className="mb-6 max-w-[540px]">
           <EvaSystem />
         </div>
       ),
