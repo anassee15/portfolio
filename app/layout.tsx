@@ -1,39 +1,38 @@
-// app/layout.tsx
 import "./globals.css";
 
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import ScrollProgress from "@/components/ScrollProgress";
-import Navigation from "@/components/Navigation";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from '@vercel/analytics/next';
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { fontVariables } from "./fonts";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
+import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Anasse El Boudiri - Portfolio",
-  description:
-    "EPFL Data Science student building agentic AI systems for NLP, vision, and high-performance ML.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} · ${site.role}`,
+    template: `%s · ${site.name}`,
+  },
+  description: site.tagline,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f3ef" },
+    { media: "(prefers-color-scheme: dark)", color: "#141417" },
+  ],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${inter.className} bg-white dark:bg-[#020617] text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300`}
-      >
-        <ThemeProvider>
-          <ScrollProgress />
-          <Navigation />
-          {children}
-          <SpeedInsights />
-          <Analytics />
-        </ThemeProvider>
+    <html lang="en" className={fontVariables}>
+      <body className="min-h-dvh">
+        <Nav />
+        {children}
+        <Footer />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

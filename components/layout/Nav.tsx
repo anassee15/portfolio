@@ -1,0 +1,24 @@
+import Link from "next/link";
+import { site } from "@/data/site";
+
+export function Nav() {
+  return (
+    <header className="page-x border-b border-rule">
+      <nav aria-label="Main" className="flex items-center gap-5 py-4 sm:gap-6">
+        <Link
+          href="/"
+          className="mr-auto font-display text-[17px] leading-none font-extrabold tracking-[0.03em] uppercase"
+        >
+          {site.name}
+        </Link>
+        <div className="hidden items-center gap-6 text-sm font-medium text-ink-2 sm:flex">
+          <Link href="/projects">Projects</Link>
+          <a href={site.cv}>CV</a>
+        </div>
+        <a href={`mailto:${site.email}`} className="bg-ink px-3 py-2 text-sm font-medium text-paper">
+          Contact
+        </a>
+      </nav>
+    </header>
+  );
+}
