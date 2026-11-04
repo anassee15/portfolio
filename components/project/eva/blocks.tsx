@@ -21,15 +21,7 @@ export function Card({ icon, kicker, title, text, mine }: Block) {
   );
 }
 
-type LayerProps = {
-  index: number;
-  name: string;
-  /** Ends the heading rule with an arrow when stages sit side by side (wide containers only). */
-  flow?: boolean;
-  children: React.ReactNode;
-};
-
-export function Layer({ index, name, flow, children }: LayerProps) {
+export function Layer({ index, name, children }: { index: number; name: string; children: React.ReactNode }) {
   return (
     <div role="group" aria-label={name}>
       <p className="meta mb-2 flex items-center gap-3 text-[11px] tracking-[0.06em] uppercase">
@@ -37,11 +29,6 @@ export function Layer({ index, name, flow, children }: LayerProps) {
           {index} · {name}
         </span>
         <span className="h-px flex-1 bg-rule" aria-hidden />
-        {flow && (
-          <span className="-ml-3 hidden leading-none @4xl:inline" aria-hidden>
-            →
-          </span>
-        )}
       </p>
       {children}
     </div>
