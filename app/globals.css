@@ -103,6 +103,26 @@
     border: 1px solid var(--ink);
   }
 
+  /* Markdown body of project pages. */
+  .prose {
+    max-width: 62ch;
+  }
+  .prose > * + * {
+    margin-top: 0.9em;
+  }
+  .prose ul {
+    display: grid;
+    gap: 4px;
+    padding-left: 18px;
+    list-style: disc;
+  }
+  .prose a {
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--ball);
+  }
+
   .btn-primary {
     background: var(--ball-text);
     border-color: var(--ball-text);
