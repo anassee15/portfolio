@@ -1,4 +1,4 @@
-import { Big_Shoulders, Caveat_Brush, JetBrains_Mono } from "next/font/google";
+import { Big_Shoulders, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
 // Big Shoulders has an optical-size axis: large headings get the "Display" cut automatically.
@@ -19,13 +19,6 @@ export const zenKaku = localFont({
   variable: "--font-zen-kaku",
 });
 
-export const caveatBrush = Caveat_Brush({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-caveat-brush",
-  preload: false,
-});
-
 export const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -33,6 +26,6 @@ export const jetbrains = JetBrains_Mono({
   preload: false,
 });
 
-export const fontVariables = [bigShoulders, zenKaku, caveatBrush, jetbrains]
+export const fontVariables = [bigShoulders, zenKaku, jetbrains]
   .map((font) => font.variable)
   .join(" ");

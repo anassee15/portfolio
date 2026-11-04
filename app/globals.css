@@ -46,7 +46,6 @@
 
   --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
   --font-sans: var(--font-zen-kaku), system-ui, sans-serif;
-  --font-hand: var(--font-caveat-brush), cursive;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
   --ease-ink: cubic-bezier(0.6, 0.05, 0.3, 1);
