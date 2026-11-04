@@ -1,28 +1,61 @@
 /**
- * The basketball play acted out by EVA's architecture:
- * question → router (point guard) → 0 to n agents → synthesis → basket.
- * Pure geometry, no three.js, so it stays easy to read and tweak.
+ * The basketball play acted out by EVA's architecture, with a real five:
+ * the point guard is the router, three wings are specialised agents,
+ * the center is the synthesis agent who scores the answer.
+ * Pure geometry and data, no three.js.
  */
 
 export type Vec3 = [number, number, number];
 
+/** A question and the agents the router calls for it (0 to 3, in parallel). */
+export type Play = { question: string; agents: string[] };
+
+// Generic agent roles: EVA has seven (coverage, therapists, self-service, contact, info, premiums, offers).
+export const PLAYS: Play[] = [
+  { question: "Is physio covered, and who can I see nearby?", agents: ["coverage", "therapists"] },
+  { question: "Does my plan cover a new crown?", agents: ["coverage"] },
+  {
+    question: "Is acupuncture covered, who practises it near me, and how do I send the bill?",
+    agents: ["coverage", "therapists", "self-service"],
+  },
+  { question: "How much will my premium be next year?", agents: ["premiums"] },
+  { question: "Thanks, that's all!", agents: [] },
+];
+
 export const HOOP_Z = -3.85;
-export const ROUTER: Vec3 = [0, 0, 1.2];
-export const SYNTHESIS: Vec3 = [0.9, 0, -2.7];
+export const ROUTER: Vec3 = [0, 0, 1.6];
+export const SYNTHESIS: Vec3 = [1, 0, -2.7];
+/** Spots for the agents: left wing, right wing, left corner. */
+export const WINGS: Vec3[] = [
+  [-3.3, 0, -0.5],
+  [3.3, 0, -0.5],
+  [-4.9, 0, -3.3],
+];
 
-/** Seven specialised agents spread on an arc around the basket. */
-export const AGENTS: Vec3[] = Array.from({ length: 7 }, (_, i) => {
-  const angle = ((-72 + i * 24) * Math.PI) / 180;
-  return [3.5 * Math.sin(angle), 0, HOOP_Z + 0.3 + 3.5 * Math.cos(angle)];
-});
-
-const ENTRY: Vec3 = [-6, 1, 4.2];
-const RIM: Vec3 = [0, 2.75, HOOP_Z + 0.2];
+export const ENTRY: Vec3 = [-6, 1, 4.2];
+export const RIM: Vec3 = [0, 2.75, HOOP_Z + 0.2];
 const HAND_HEIGHT = 1.25;
 
-/** Phase boundaries, in seconds: entry pass, to agents, to synthesis, shot, drop, pause. */
-const PHASES = [1.1, 2.5, 3.9, 5.0, 5.5];
-export const PLAY_DURATION = 6.2;
+/** What the play is doing; the trace under the court follows these steps. */
+export enum Phase {
+  Question,
+  ToAgents,
+  ToSynthesis,
+  Shot,
+  Scored,
+}
+
+/** Start time of each phase, in seconds. */
+const STARTS = [0, 1.1, 2.6, 4.1, 5.2];
+export const PLAY_DURATION = 7;
+
+export function phaseAt(t: number): Phase {
+  let phase = Phase.Question;
+  STARTS.forEach((start, i) => {
+    if (t >= start) phase = i;
+  });
+  return phase;
+}
 
 const hand = ([x, , z]: Vec3): Vec3 => [x, HAND_HEIGHT, z];
 
@@ -36,35 +69,35 @@ function pass(a: Vec3, b: Vec3, t: number, lift: number): Vec3 {
   ];
 }
 
-/** Like the real router: it may call no agent at all, or up to three in parallel. */
-export function pickAgents(random = Math.random): number[] {
-  const count = Math.floor(random() * 4);
-  const picked = new Set<number>();
-  while (picked.size < count) picked.add(Math.floor(random() * AGENTS.length));
-  return [...picked];
-}
-
-/** Positions of every ball in flight at time `t` (seconds since the play started). */
-export function ballsAt(t: number, picked: number[]): Vec3[] {
-  const [toRouter, toAgents, toSynthesis, shot, drop] = PHASES;
+/** Positions of every ball in flight at time `t`, with `agents` wings called. */
+export function ballsAt(t: number, agents: number): Vec3[] {
+  const [, toAgents, toSynthesis, shot, scored] = STARTS;
   const router = hand(ROUTER);
   const synthesis = hand(SYNTHESIS);
+  const wings = WINGS.slice(0, agents).map(hand);
 
-  if (t < toRouter) return [pass(ENTRY, router, t / toRouter, 1.2)];
+  if (t < toAgents) return [pass(ENTRY, router, t / toAgents, 1.2)];
 
-  if (t < toSynthesis) {
+  if (t < shot) {
     // With no agent called, the router passes straight to the synthesis.
-    if (picked.length === 0) return [pass(router, synthesis, (t - toRouter) / (toSynthesis - toRouter), 0.8)];
-
-    if (t < toAgents) {
-      const k = ((t - toRouter) / (toAgents - toRouter)) * 1.15;
-      return picked.map((i) => pass(router, hand(AGENTS[i]), k, 0.7));
+    if (agents === 0) return [pass(router, synthesis, (t - toAgents) / (shot - toAgents), 0.8)];
+    if (t < toSynthesis) {
+      const k = ((t - toAgents) / (toSynthesis - toAgents)) * 1.15;
+      return wings.map((wing) => pass(router, wing, k, 0.7));
     }
-    const k = ((t - toAgents) / (toSynthesis - toAgents)) * 1.15;
-    return picked.map((i) => pass(hand(AGENTS[i]), synthesis, k, 0.6));
+    const k = ((t - toSynthesis) / (shot - toSynthesis)) * 1.15;
+    return wings.map((wing) => pass(wing, synthesis, k, 0.6));
   }
 
-  if (t < shot) return [pass(synthesis, RIM, (t - toSynthesis) / (shot - toSynthesis), 1.6)];
-  if (t < drop) return [[RIM[0], RIM[1] - (t - shot) * 4.5, RIM[2]]];
+  if (t < scored) return [pass(synthesis, RIM, (t - shot) / (scored - shot), 1.6)];
+  if (t < scored + 0.5) return [[RIM[0], RIM[1] - (t - scored) * 4.5, RIM[2]]];
+  return [];
+}
+
+/** Which player holds or is about to receive the ball: "router", "synthesis", a wing index, or none. */
+export function activePlayers(phase: Phase, agents: number): ("router" | "synthesis" | number)[] {
+  if (phase === Phase.Question) return ["router"];
+  if (phase === Phase.ToAgents) return agents ? [...Array(agents).keys()] : ["synthesis"];
+  if (phase === Phase.ToSynthesis || phase === Phase.Shot) return ["synthesis"];
   return [];
 }
