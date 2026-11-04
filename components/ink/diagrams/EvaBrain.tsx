@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { link, type Point } from "../geometry";
 import { InkDiagram } from "../InkDiagram";
 
 /**
@@ -7,8 +8,6 @@ import { InkDiagram } from "../InkDiagram";
  * Laid out so that no line crosses another or a label.
  */
 
-type Point = [number, number];
-
 const ROUTER: Point = [78, 80];
 const SYNTHESIS: Point = [290, 80];
 const AGENTS: { label: string; at: Point; called: boolean; labelAt: Point }[] = [
@@ -16,14 +15,6 @@ const AGENTS: { label: string; at: Point; called: boolean; labelAt: Point }[] = 
   { label: "therapists", at: [184, 80], called: true, labelAt: [184, 62] },
   { label: "+ 5 more", at: [184, 128], called: false, labelAt: [184, 156] },
 ];
-
-/** A straight segment from a to b, trimmed so it starts and ends at the circles' edges. */
-function link([x1, y1]: Point, [x2, y2]: Point, r1: number, r2: number) {
-  const length = Math.hypot(x2 - x1, y2 - y1);
-  const dx = (x2 - x1) / length;
-  const dy = (y2 - y1) / length;
-  return `M${x1 + dx * r1} ${y1 + dy * r1} L${x2 - dx * r2} ${y2 - dy * r2}`;
-}
 
 export function EvaBrain() {
   const id = useId();
