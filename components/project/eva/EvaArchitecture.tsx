@@ -13,9 +13,9 @@ const CHANNEL: Block[] = [
 ];
 
 const BRAIN_LEFT: Block[] = [
-  { icon: "openai", kicker: "reasoning", title: "LLMs", text: "GPT models on a public cloud. Every agent runs on them." },
-  { icon: "search", kicker: "knowledge", title: "Search index", text: "General terms, business rules, knowledge base." },
-  { icon: "archive", kicker: "memory", title: "Object storage", text: "The history of every conversation." },
+  { icon: "openai", kicker: "reasoning", title: "Azure OpenAI", text: "The GPT models every agent runs on." },
+  { icon: "search", kicker: "knowledge", title: "Azure AI Search", text: "General terms, business rules, knowledge base." },
+  { icon: "archive", kicker: "memory", title: "Azure Blob Storage", text: "The history of every conversation." },
 ];
 
 const BRAIN_RIGHT: Block[] = [
@@ -31,7 +31,7 @@ const STEERING: Block[] = [
 ];
 
 const FOUNDATION: Block[] = [
-  { icon: "kubernetes", kicker: "runtime", title: "Kubernetes", text: "Everything above runs in containers, on a public cloud." },
+  { icon: "kubernetes", kicker: "runtime", title: "Azure Kubernetes Service", text: "Everything above runs here, in Docker containers." },
   { icon: "gitlab", kicker: "delivery", title: "GitLab CI/CD", text: "Lint, types, tests, images. Dev → int → staging → prod, plus a preview per branch." },
   { icon: "pulse", kicker: "health", title: "Golden questions", text: "A pod stays out of rotation until its latency is back under the threshold.", mine: true },
 ];
