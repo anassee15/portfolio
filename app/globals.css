@@ -107,14 +107,6 @@
   .prose {
     max-width: 62ch;
   }
-  /* Wider screens: a slightly larger text and a longer line, still under ~75 characters. */
-  @media (width >= 64rem) {
-    .prose {
-      max-width: 70ch;
-      font-size: 17px;
-      line-height: 1.65;
-    }
-  }
   .prose > * + * {
     margin-top: 0.9em;
   }
