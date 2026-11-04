@@ -54,13 +54,13 @@ export function LineChart({ title, subtitle, xLabels, series, yTicks = [0, 0.25,
         {yTicks.map((v) => (
           <g key={v}>
             <line x1={PAD.left} x2={W - PAD.right} y1={sy(v)} y2={sy(v)} className="stroke-rule" />
-            <text x={PAD.left - 8} y={sy(v) + 4} textAnchor="end" className="fill-muted text-[10px]">
+            <text x={PAD.left - 8} y={sy(v) + 4} textAnchor="end" className="fill-muted text-[11px]">
               {percent(v)}
             </text>
           </g>
         ))}
         {xLabels.map((label, i) => (
-          <text key={label} x={sx(i)} y={H - 10} textAnchor="middle" className="fill-muted text-[10px]">
+          <text key={label} x={sx(i)} y={H - 10} textAnchor="middle" className="fill-muted text-[11px]">
             {label}
           </text>
         ))}
@@ -80,7 +80,7 @@ export function LineChart({ title, subtitle, xLabels, series, yTicks = [0, 0.25,
               <circle key={i} cx={sx(i)} cy={sy(v)} r={active === i ? 6 : 4.5} fill={color(s)} className="stroke-paper" strokeWidth={2} />
             ))}
             {/* Value at the end of the line, or at the hovered point. */}
-            <text x={sx(active ?? last) + 10} y={sy(s.values[active ?? last]) + 4} className="fill-ink text-xs font-medium">
+            <text x={sx(active ?? last) + 10} y={sy(s.values[active ?? last]) + 4} className="fill-ink text-[13px] font-medium">
               {percent(s.values[active ?? last])}
             </text>
           </g>

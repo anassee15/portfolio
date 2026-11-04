@@ -5,8 +5,8 @@ export function Figures({ figures, source }: { figures: Figure[]; source: string
   const [headline, ...rest] = figures;
   return (
     <div className="@container">
-      <dl className="grid grid-cols-2 items-end gap-x-7 gap-y-6 @3xl:grid-cols-[1.4fr_repeat(3,minmax(0,1fr))]">
-        <Item figure={headline} className="col-span-2 @3xl:col-span-1" big />
+      <dl className="grid grid-cols-2 items-end gap-x-7 gap-y-6 @lg:grid-cols-3 @4xl:grid-cols-[1.4fr_repeat(3,minmax(0,1fr))]">
+        <Item figure={headline} className="col-span-full @4xl:col-span-1" big />
         {rest.map((figure) => (
           <Item key={figure.label} figure={figure} />
         ))}
