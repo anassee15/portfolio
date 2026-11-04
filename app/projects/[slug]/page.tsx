@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CaseLayout } from "@/components/project/CaseLayout";
 import { ProjectHeader } from "@/components/project/ProjectHeader";
+import { getCaseSlots } from "@/components/project/slots";
 import { getProjectBySlug } from "@/data/projects";
 import { getCaseStudy, getCaseStudySlugs } from "@/lib/content";
 
@@ -30,7 +31,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main className="page-x">
       <ProjectHeader header={study.header} project={project} />
-      <CaseLayout sections={study.sections} />
+      <CaseLayout sections={study.sections} slots={getCaseSlots(project)} />
     </main>
   );
 }

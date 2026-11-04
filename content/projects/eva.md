@@ -24,7 +24,7 @@ The harness itself: 219 tests, 125 situations × 30 products, 4 languages, 8 per
 
 ## Try it
 
-A real test situation from the harness, anonymised. The simulated policyholder knows things EVA has to ask for.
+A real test situation from the harness. The simulated policyholder knows things EVA has to ask for, then judges check every claim of the answer.
 
 ## What I learned
 
