@@ -1,7 +1,7 @@
 ---
-headline: "EVA, and the harness"
+headline: "Conversational agentic systems, and their evaluation"
 meta: "Groupe Mutuel · Aug 2025 – Feb 2027 · core contributor, harness built solo"
-lede: "An assistant in the mobile app that answers policyholders about what their plan covers, in four languages. And the tool I built to prove it answers right, every time."
+lede: "EVA is the conversational agent of Groupe Mutuel, a Swiss health insurer. In the mobile app, it answers policyholders about what their plan covers, in four languages. And I built the harness that proves it answers right, every time."
 ---
 
 ## The situation

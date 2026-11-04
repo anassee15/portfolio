@@ -20,9 +20,9 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "eva",
-    title: "EVA, and the harness that tests it",
+    title: "Conversational agentic systems, and their evaluation",
     pitch:
-      "An assistant in the Groupe Mutuel app that tells policyholders what their plan covers, in four languages.",
+      "EVA, the conversational agent of Groupe Mutuel, tells policyholders what their plan covers, in four languages.",
     context: "Groupe Mutuel",
     year: "2025 – 2027",
     tier: "lead",
