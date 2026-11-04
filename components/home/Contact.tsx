@@ -1,6 +1,5 @@
 import { Section } from "@/components/layout/Section";
 import { site } from "@/data/site";
-import { CopyEmail } from "./CopyEmail";
 
 export function Contact() {
   return (
@@ -11,7 +10,12 @@ export function Contact() {
       <p className="mb-7 max-w-[62ch] text-[17px]">
         I&apos;m looking for a role as {listOf(site.roles)}, in Switzerland.
       </p>
-      <CopyEmail email={site.email} />
+      <a
+        href={`mailto:${site.email}`}
+        className="font-display text-[clamp(25px,7vw,64px)] leading-none font-extrabold [overflow-wrap:anywhere] decoration-ball decoration-[3px] underline-offset-[6px] hover:underline"
+      >
+        {site.email}
+      </a>
       <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
         <li>
           <a href={site.links.linkedin} className="link">
