@@ -23,7 +23,7 @@ export function Cover() {
           {after}
         </p>
         <div className="mt-[22px] flex flex-wrap gap-2.5">
-          <a href={`mailto:${site.email}`} className="btn btn-primary">
+          <a href="#contact" className="btn btn-primary">
             Contact me
           </a>
           <a href={site.cv} className="btn" download>

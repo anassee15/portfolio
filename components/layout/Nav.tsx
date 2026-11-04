@@ -15,9 +15,9 @@ export function Nav() {
           <Link href="/projects">Projects</Link>
           <a href={site.cv}>CV</a>
         </div>
-        <a href={`mailto:${site.email}`} className="bg-ink px-3 py-2 text-sm font-medium text-paper">
+        <Link href="/#contact" className="bg-ink px-3 py-2 text-sm font-medium text-paper">
           Contact
-        </a>
+        </Link>
       </nav>
     </header>
   );

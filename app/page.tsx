@@ -1,3 +1,4 @@
+import { Contact } from "@/components/home/Contact";
 import { Cover } from "@/components/home/Cover";
 import { MainProject } from "@/components/home/MainProject";
 import { Path } from "@/components/home/Path";
@@ -9,6 +10,7 @@ export default function HomePage() {
       <div className="border-t border-rule">
         <Path />
         <MainProject />
+        <Contact />
       </div>
     </main>
   );
