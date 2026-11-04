@@ -1,4 +1,5 @@
-import { Big_Shoulders, Caveat_Brush, JetBrains_Mono, Zen_Kaku_Gothic_New } from "next/font/google";
+import { Big_Shoulders, Caveat_Brush, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
 // Big Shoulders has an optical-size axis: large headings get the "Display" cut automatically.
 export const bigShoulders = Big_Shoulders({
@@ -7,9 +8,14 @@ export const bigShoulders = Big_Shoulders({
   variable: "--font-big-shoulders",
 });
 
-export const zenKaku = Zen_Kaku_Gothic_New({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+// Zen Kaku is a Japanese font: from Google, next/font preloads all its CJK slices (~3 MB).
+// We self-host only its latin slice (OFL), ~10 KB per weight.
+export const zenKaku = localFont({
+  src: [
+    { path: "./font-files/zen-kaku-gothic-new-latin-400.woff2", weight: "400" },
+    { path: "./font-files/zen-kaku-gothic-new-latin-500.woff2", weight: "500" },
+    { path: "./font-files/zen-kaku-gothic-new-latin-700.woff2", weight: "700" },
+  ],
   variable: "--font-zen-kaku",
 });
 
