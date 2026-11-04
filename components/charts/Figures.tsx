@@ -5,7 +5,8 @@ import type { Figure } from "@/data/projects";
  * display face, signs and units kept smaller so the digits carry the weight.
  * The first figure is the headline; the source sits underneath.
  */
-export function Figures({ figures, source }: { figures: Figure[]; source: string }) {
+export function Figures({ figures, source, compact }: { figures: Figure[]; source: string; compact?: boolean }) {
+  if (compact) return <CompactFigures figures={figures} source={source} />;
   const [headline, ...rest] = figures;
   return (
     <div className="@container">
@@ -16,6 +17,30 @@ export function Figures({ figures, source }: { figures: Figure[]; source: string
         ))}
       </dl>
       <p className="meta mt-5 text-[11px]">{source}</p>
+    </div>
+  );
+}
+
+/** Same scoreboard look, smaller and all equal: for a project row rather than a headline. */
+function CompactFigures({ figures, source }: { figures: Figure[]; source: string }) {
+  return (
+    <div>
+      <dl className="grid grid-cols-2 gap-x-6 gap-y-5">
+        {figures.map(({ value, label }) => {
+          const [prefix, digits, suffix] = splitValue(value);
+          return (
+            <div key={label} className="flex flex-col-reverse">
+              <dt className="mt-1.5 font-mono text-[11px] tracking-[0.06em] text-ink-2 uppercase">{label}</dt>
+              <dd className="font-display text-[clamp(30px,3.2vw,38px)] leading-[0.85] font-black whitespace-nowrap tabular-nums">
+                {prefix && <span className="text-[0.6em] font-bold text-ink-2">{prefix.trim()}</span>}
+                {digits}
+                {suffix && <span className="ml-[0.04em] text-[0.6em]">{suffix}</span>}
+              </dd>
+            </div>
+          );
+        })}
+      </dl>
+      <p className="meta mt-4 text-[11px]">{source}</p>
     </div>
   );
 }
