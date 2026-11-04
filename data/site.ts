@@ -5,7 +5,7 @@ export const site = {
   availability: "available February 2027",
   location: "Lausanne, Switzerland",
   tagline: "I build agentic AI that ships, and the harness that proves it works.",
-  now: "Master thesis at Groupe Mutuel on agentic evaluation and the move to open-weight models, until February 2027.",
+  now: "master thesis at Groupe Mutuel on agentic evaluation and the move to open-weight models, until February 2027.",
   url: "https://anasse.vercel.app",
   email: "elboudiri.anasse@gmail.com",
   cv: "/cv.pdf",
