@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Figures } from "@/components/charts/Figures";
 import { PassKChart } from "@/components/charts/PassKChart";
-import { EvaSystem } from "@/components/ink/diagrams/EvaSystem";
+import { EvaBrain } from "@/components/ink/diagrams/EvaBrain";
 import { Section } from "@/components/layout/Section";
 import { getProjectBySlug } from "@/data/projects";
 
@@ -24,7 +24,7 @@ export function MainProject() {
             </Link>
           </p>
         </div>
-        <EvaSystem />
+        <EvaBrain />
       </div>
 
       <div className="mt-7">

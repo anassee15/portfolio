@@ -3,7 +3,7 @@ import { PassKChart } from "@/components/charts/PassKChart";
 import { RunsChart } from "@/components/charts/RunsChart";
 import { EvaReplay } from "@/components/demos/EvaReplay";
 import { EvaHarness } from "@/components/ink/diagrams/EvaHarness";
-import { EvaSystem } from "@/components/ink/diagrams/EvaSystem";
+import { EvaArchitecture } from "@/components/project/eva/EvaArchitecture";
 import type { CaseSlots } from "../CaseLayout";
 import type { Project } from "@/data/projects";
 
@@ -11,8 +11,8 @@ export function evaSlots(project: Project): CaseSlots {
   return {
     "the-system": {
       before: (
-        <div className="mb-6 max-w-[540px]">
-          <EvaSystem />
+        <div className="mb-8">
+          <EvaArchitecture />
         </div>
       ),
     },
