@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useElementWidth } from "@/lib/hooks";
 
 export type Series = { name: string; values: number[]; highlight?: boolean };
 
@@ -13,8 +14,6 @@ type LineChartProps = {
   yTicks?: number[];
 };
 
-const W = 420;
-const H = 210;
 const PAD = { left: 40, right: 64, top: 10, bottom: 30 };
 
 const percent = (v: number) => `${Math.round(v * 100)} %`;
@@ -25,13 +24,17 @@ const percent = (v: number) => `${Math.round(v * 100)} %`;
  */
 export function LineChart({ title, subtitle, xLabels, series, yTicks = [0, 0.25, 0.5, 0.75, 1] }: LineChartProps) {
   const [active, setActive] = useState<number | null>(null);
+  // Drawn at its real pixel width, so labels keep their size on every screen.
+  const frame = useRef<HTMLElement>(null);
+  const W = useElementWidth(frame, 420);
+  const H = Math.min(300, Math.max(200, W * 0.5));
   const last = xLabels.length - 1;
   const sx = (i: number) => PAD.left + (i / last) * (W - PAD.left - PAD.right);
   const sy = (v: number) => PAD.top + (1 - v) * (H - PAD.top - PAD.bottom);
   const color = (s: Series) => (s.highlight ? "var(--ball)" : "var(--muted)");
 
   return (
-    <figure>
+    <figure ref={frame}>
       <figcaption>
         <p className="text-[13px] font-medium">{title}</p>
         {subtitle && <p className="meta mb-2 text-[11px]">{subtitle}</p>}

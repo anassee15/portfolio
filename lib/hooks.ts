@@ -64,6 +64,21 @@ export function useInView(ref: React.RefObject<Element | null>, { rootMargin = "
   return inView;
 }
 
+/** The element's content width in pixels, kept up to date; `fallback` until it is measured. */
+export function useElementWidth(ref: React.RefObject<Element | null>, fallback: number) {
+  const [width, setWidth] = useState(fallback);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new ResizeObserver(([entry]) => setWidth(Math.round(entry.contentRect.width)));
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [ref]);
+
+  return width;
+}
+
 let webglSupport: boolean | undefined;
 
 function detectWebGL() {
