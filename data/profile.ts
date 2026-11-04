@@ -5,7 +5,8 @@ export type Strength = { title: string; proof: string; keywords: string[] };
 export const strengths: Strength[] = [
   {
     title: "Agents in production",
-    proof: "Core contributor to EVA at Groupe Mutuel: 115,000 policyholders have used it, ~18,000 calls avoided in 6 months.",
+    proof:
+      "Core contributor to EVA, the conversational agent of Groupe Mutuel: 115,000 policyholders have used it, ~18,000 calls avoided in 6 months.",
     keywords: ["multi-agent", "RAG", "Azure OpenAI", "Langfuse"],
   },
   {
