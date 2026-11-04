@@ -23,7 +23,7 @@ export function evaSlots(project: Project): CaseSlots {
         </div>
       ),
       after: (
-        <div className="mt-10 max-w-[480px]">
+        <div className="mt-10">
           <PassKChart />
         </div>
       ),
