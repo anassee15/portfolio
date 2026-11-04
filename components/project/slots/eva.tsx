@@ -2,8 +2,8 @@ import { Figures } from "@/components/charts/Figures";
 import { PassKChart } from "@/components/charts/PassKChart";
 import { RunsChart } from "@/components/charts/RunsChart";
 import { EvaReplay } from "@/components/demos/EvaReplay";
-import { EvaHarness } from "@/components/ink/diagrams/EvaHarness";
 import { EvaArchitecture } from "@/components/project/eva/EvaArchitecture";
+import { HarnessArchitecture } from "@/components/project/eva/HarnessArchitecture";
 import type { CaseSlots } from "../CaseLayout";
 import type { Project } from "@/data/projects";
 
@@ -18,8 +18,8 @@ export function evaSlots(project: Project): CaseSlots {
     },
     "the-harness": {
       before: (
-        <div className="mb-6">
-          <EvaHarness />
+        <div className="mb-8">
+          <HarnessArchitecture />
         </div>
       ),
       after: (

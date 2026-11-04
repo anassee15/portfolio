@@ -38,12 +38,3 @@ export function InkDiagram({ viewBox, label, className, defs, ink, text }: InkDi
     </Denoise>
   );
 }
-
-/** A handwritten note in the margin of a diagram (orange, Caveat Brush). Use rarely. */
-export function Annotation({ x, y, children }: { x: number; y: number; children: React.ReactNode }) {
-  return (
-    <text x={x} y={y} className="fill-ball-text font-hand text-[19px]">
-      {children}
-    </text>
-  );
-}

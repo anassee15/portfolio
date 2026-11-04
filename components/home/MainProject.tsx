@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Figures } from "@/components/charts/Figures";
-import { PassKChart } from "@/components/charts/PassKChart";
 import { EvaBrain } from "@/components/ink/diagrams/EvaBrain";
 import { Section } from "@/components/layout/Section";
+import { HarnessArchitecture } from "@/components/project/eva/HarnessArchitecture";
 import { getProjectBySlug } from "@/data/projects";
 
 export function MainProject() {
@@ -31,19 +31,12 @@ export function MainProject() {
         <Figures figures={eva.figures} source={eva.source} />
       </div>
 
-      <div className="mt-[30px] grid items-start gap-x-10 gap-y-5 md:grid-cols-2">
-        <div>
-          <h3 className="mb-1.5 font-display text-[23px] leading-[1.05] font-extrabold">Why the harness measures pass^k</h3>
-          <p className="max-w-[62ch] text-ink-2">
-            An agent that succeeds once in k tries looks great on pass@k. In production it has to succeed every time,
-            which is pass^k. Same agent, two very different stories.
-          </p>
-          <p className="meta mt-2.5">
-            219 tests · 125 situations × 30 products · 4 languages · catches regressions and gates feature rollouts in
-            production
-          </p>
-        </div>
-        <PassKChart />
+      <div className="mt-[30px]">
+        <h3 className="mb-1.5 font-display text-[23px] leading-[1.05] font-extrabold">How the harness works</h3>
+        <p className="mb-5 max-w-[62ch] text-ink-2">
+          Simulate, then judge, then measure. The two steps are decoupled, so a new judge can grade old conversations.
+        </p>
+        <HarnessArchitecture />
       </div>
     </Section>
   );
