@@ -25,19 +25,3 @@ export function arrowHead([x, y]: Point, direction: "right" | "left" | "up" | "d
   }
 }
 
-/** A smooth curve through every point (Catmull-Rom turned into cubic Béziers), without the leading "M". */
-export function smoothThrough(points: Point[]) {
-  let d = "";
-  for (let i = 0; i < points.length - 1; i++) {
-    const p0 = points[i - 1] ?? points[i];
-    const [x1, y1] = points[i];
-    const [x2, y2] = points[i + 1];
-    const p3 = points[i + 2] ?? points[i + 1];
-    const c1 = [x1 + (x2 - p0[0]) / 6, y1 + (y2 - p0[1]) / 6];
-    const c2 = [x2 - (p3[0] - x1) / 6, y2 - (p3[1] - y1) / 6];
-    d += ` C${round(c1[0])} ${round(c1[1])}, ${round(c2[0])} ${round(c2[1])}, ${x2} ${y2}`;
-  }
-  return d;
-}
-
-const round = (n: number) => Math.round(n * 10) / 10;

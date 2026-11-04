@@ -1,22 +1,16 @@
-import { PathCurve } from "@/components/ink/diagrams/PathCurve";
 import { Section } from "@/components/layout/Section";
-import { education, experience, type PathEntry } from "@/data/path";
+import { education, experience, intro, type PathEntry } from "@/data/path";
 
 export function Path() {
   return (
     <Section label="Path" id="path">
-      <h2 className="mb-2 font-display text-[clamp(26px,3.6vw,36px)] leading-[1.02] font-extrabold">
-        From team captain to agents in production
+      <h2 className="mb-3 font-display text-[clamp(26px,3.6vw,36px)] leading-[1.02] font-extrabold">
+        From robots to agents in production
       </h2>
-      {/* On phones the curve goes under the lists. */}
-      <div className="flex flex-col">
-        <div className="order-last mt-8 md:order-none md:mt-1.5">
-          <PathCurve />
-        </div>
-        <div className="grid gap-x-10 gap-y-8 md:mt-6 md:grid-cols-2">
-          <Entries title="Experience" entries={experience} />
-          <Entries title="Education" entries={education} />
-        </div>
+      <p className="max-w-[62ch] text-[17px]">{intro}</p>
+      <div className="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-2">
+        <Entries title="Experience" entries={experience} />
+        <Entries title="Education" entries={education} />
       </div>
     </Section>
   );

@@ -1,22 +1,8 @@
-/** Career path, as on the CV: the curve's milestones, then the two lists under it. */
+/** Career path, as on the CV: a short intro, then experience and education. */
 
-export type MilestoneId = "captain" | "injury" | "hesso" | "epfl" | "idiap" | "sv" | "gm" | "available";
-
-export type Milestone = { id: MilestoneId; label: string };
-
-/** In order. Captain and the injury have no year on purpose. */
-export const milestones: Milestone[] = [
-  { id: "captain", label: "Club basketball, captain" },
-  { id: "injury", label: "back injury + covid" },
-  { id: "hesso", label: "HES-SO · 2020" },
-  { id: "epfl", label: "EPFL · 2023" },
-  { id: "idiap", label: "Idiap · 2024" },
-  { id: "sv", label: "Scientific Visual · 2025" },
-  { id: "gm", label: "Groupe Mutuel · 2025" },
-  { id: "available", label: "Feb 2027" },
-];
-
-export const injuryNote = "Nobody is a prisoner of their destiny.";
+// Draft intro, to be rewritten by Anasse in his own words.
+export const intro =
+  "I did a bachelor in computer science at HES\u2060-\u2060SO Neuchâtel, where I built two small NVIDIA robots and got vision models running on them. Then a master's in data science at EPFL, with research at Idiap and a summer of C++ at Scientific Visual. Since 2025 I've been at Groupe Mutuel: first putting an assistant in production, now measuring how reliable it is, for my master thesis.";
 
 export type PathEntry = { org: string; role: string; dates: string; detail: string };
 
