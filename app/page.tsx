@@ -1,6 +1,7 @@
 import { Contact } from "@/components/home/Contact";
 import { Cover } from "@/components/home/Cover";
 import { MainProject } from "@/components/home/MainProject";
+import { MoreWork } from "@/components/home/MoreWork";
 import { Profile } from "@/components/home/Profile";
 import { SelectedWork } from "@/components/home/SelectedWork";
 
@@ -12,6 +13,7 @@ export default function HomePage() {
         <Profile />
         <MainProject />
         <SelectedWork />
+        <MoreWork />
         <Contact />
       </div>
     </main>
