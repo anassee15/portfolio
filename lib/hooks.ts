@@ -64,6 +64,23 @@ export function useInView(ref: React.RefObject<Element | null>, { rootMargin = "
   return inView;
 }
 
+/** True once the window "load" event has fired: initial images, fonts and scripts are in. */
+export function usePageLoaded() {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const done = () => setLoaded(true);
+    if (document.readyState === "complete") {
+      const id = setTimeout(done);
+      return () => clearTimeout(id);
+    }
+    window.addEventListener("load", done, { once: true });
+    return () => window.removeEventListener("load", done);
+  }, []);
+
+  return loaded;
+}
+
 /** The element's content width in pixels, kept up to date; `fallback` until it is measured. */
 export function useElementWidth(ref: React.RefObject<Element | null>, fallback: number) {
   const [width, setWidth] = useState(fallback);

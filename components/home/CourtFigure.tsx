@@ -3,9 +3,9 @@
 import { useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { PLAYS, Phase, type Play } from "@/components/three/play";
-import { useCssVariables, useInView, useMediaQuery, usePrefersReducedMotion, useWebGL } from "@/lib/hooks";
+import { useCssVariables, useInView, useMediaQuery, usePageLoaded, usePrefersReducedMotion, useWebGL } from "@/lib/hooks";
 
-// three.js is only downloaded when the court gets close to the viewport.
+// three.js is only downloaded once the page has loaded and the court is close to the viewport.
 const CourtScene = dynamic(() => import("@/components/three/CourtScene"), { ssr: false });
 
 const COLOR_TOKENS = ["paper", "ink", "ball"] as const;
@@ -22,18 +22,21 @@ export function CourtFigure() {
   const webgl = useWebGL();
   const touch = useMediaQuery("(pointer: coarse)");
   const colors = useCssVariables(COLOR_TOKENS);
+  const loaded = usePageLoaded();
   const [playIndex, setPlayIndex] = useState(0);
   const [sample, setSample] = useState(0);
   const [phase, setPhase] = useState(Phase.Scored);
 
   const animated = webgl && !reducedMotion;
-  const play = animated ? PLAYS[playIndex] : STILL_PLAY;
+  // Until the scene is mounted, the still frame stands in for it (and is what loads first).
+  const live = animated && near && loaded && colors !== null;
+  const play = live ? PLAYS[playIndex] : STILL_PLAY;
   const nextPlay = () => setPlayIndex((i) => (i + 1) % PLAYS.length);
 
   return (
     <figure className="min-w-0">
       <div ref={frame} role="img" aria-label={DESCRIPTION} className="relative aspect-[4/3] w-full bg-paper">
-        {animated && near && colors ? (
+        {live ? (
           <CourtScene
             colors={colors}
             play={play}
@@ -44,12 +47,12 @@ export function CourtFigure() {
             onPlayEnd={nextPlay}
           />
         ) : (
-          !animated && <StillCourt />
+          <StillCourt />
         )}
       </div>
       <figcaption className="mt-3 flex items-start justify-between gap-4">
-        <PlayTrace play={play} phase={animated ? phase : Phase.Scored} />
-        {animated && (
+        <PlayTrace play={play} phase={live ? phase : Phase.Scored} />
+        {live && (
           <button
             type="button"
             onClick={() => {
@@ -82,7 +85,7 @@ function PlayTrace({ play, phase }: { play: Play; phase: Phase }) {
         {steps.map((step) => (
           <li
             key={step.at}
-            className={phase < step.at ? "text-muted opacity-40" : step === latest ? "text-ball-text" : "text-ink-2"}
+            className={phase < step.at ? "text-muted" : step === latest ? "text-ball-text" : "text-ink-2"}
           >
             {step.text}
           </li>
@@ -97,12 +100,28 @@ function agentsText(agents: string[]) {
   return agents.length === 1 ? agents[0] : `${agents.join(" + ")}, in parallel`;
 }
 
-/** Frame rendered from the 3D scene, for reduced motion or when WebGL is missing. */
+const STILL_SIZES = "(min-width: 768px) 45vw, 100vw";
+const stillSrcSet = (theme: "light" | "dark") => `/court/court-${theme}-800.webp 800w, /court/court-${theme}.webp 1200w`;
+
+/**
+ * Frame rendered from the 3D scene: shown while the scene loads, and instead of it
+ * for reduced motion or without WebGL. Often the largest thing on screen at load,
+ * so it is fetched first, at the right size.
+ */
 function StillCourt() {
   return (
     <picture>
-      <source srcSet="/court/court-dark.webp" media="(prefers-color-scheme: dark)" />
-      <img src="/court/court-light.webp" alt="" width={1200} height={900} className="h-full w-full" />
+      <source srcSet={stillSrcSet("dark")} sizes={STILL_SIZES} media="(prefers-color-scheme: dark)" />
+      <img
+        src="/court/court-light.webp"
+        srcSet={stillSrcSet("light")}
+        sizes={STILL_SIZES}
+        alt=""
+        width={1200}
+        height={900}
+        fetchPriority="high"
+        className="h-full w-full"
+      />
     </picture>
   );
 }
