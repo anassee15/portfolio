@@ -5,6 +5,19 @@ export type Bar = { label: string; value: number; low?: number; display: string;
 
 export type BarChartData = { title: string; bars: Bar[]; note: string };
 
+/** The filter of /projects; every project carries one or more of these. */
+export const tagLabels = {
+  agents: "Agents",
+  llm: "LLMs",
+  evaluation: "Evaluation",
+  vision: "Vision",
+  robotics: "Robotics",
+  hpc: "HPC",
+  dataviz: "Dataviz",
+} as const;
+
+export type Tag = keyof typeof tagLabels;
+
 export type Project = {
   slug: string;
   title: string;
@@ -12,8 +25,9 @@ export type Project = {
   pitch: string;
   context: string;
   year: string;
-  tier: "lead" | "flagship" | "bench";
-  tags: string[];
+  /** lead: main project, flagship: Selected work, bench: More work, extra: only on /projects. */
+  tier: "lead" | "flagship" | "bench" | "extra";
+  tags: Tag[];
   stack: string[];
   /** The first figure is the headline one. */
   figures: Figure[];
@@ -35,7 +49,7 @@ export const projects: Project[] = [
     context: "Groupe Mutuel",
     year: "2025 – 2027",
     tier: "lead",
-    tags: ["agents", "evaluation", "llm"],
+    tags: ["agents", "llm", "evaluation"],
     stack: ["Python", "FastAPI", "LLMs", "Langfuse", "Databricks", "Kubernetes", "React / TS"],
     figures: [
       { value: "115,000", label: "policyholders have used EVA" },
@@ -52,7 +66,7 @@ export const projects: Project[] = [
     context: "EPFL · CS-503",
     year: "2025",
     tier: "flagship",
-    tags: ["agents", "vision", "open-weight"],
+    tags: ["agents", "llm", "vision"],
     stack: ["Python", "JavaScript (Mineflayer)", "GPT-4.1", "Ollama", "VLMs", "ChromaDB"],
     figures: [{ value: "172", label: "skills written by the agent itself" }],
     source: "CS-503 project, EPFL, 2025. Three full runs.",
@@ -73,7 +87,7 @@ export const projects: Project[] = [
     context: "EPFL · EE-559",
     year: "2026",
     tier: "flagship",
-    tags: ["vlm", "diffusion", "evaluation"],
+    tags: ["llm", "vision", "evaluation"],
     stack: ["Qwen 3.6 / 2.5-VL", "Gemma 4", "FLUX.2", "LoRA", "Docker"],
     figures: [{ value: "84 %", label: "toxicity reduction, no fine-tuning" }],
     source: "EE-559 project report, EPFL, 2026. Mean over repeated runs.",
@@ -95,7 +109,7 @@ export const projects: Project[] = [
     context: "EPFL · MATH-454",
     year: "2026",
     tier: "flagship",
-    tags: ["hpc", "cuda"],
+    tags: ["hpc"],
     stack: ["C++", "MPI", "CUDA", "HDF5", "SLURM"],
     figures: [{ value: "~105×", label: "the serial version, on one GPU" }],
     source: "Benchmarks on SCITAS, EPFL, 2026.",
@@ -116,7 +130,7 @@ export const projects: Project[] = [
     context: "EPFL · COM-480",
     year: "2026",
     tier: "flagship",
-    tags: ["dataviz", "basketball"],
+    tags: ["dataviz"],
     stack: ["D3.js", "JavaScript", "Python"],
     figures: [
       { value: "46", label: "seasons" },
@@ -154,7 +168,7 @@ export const projects: Project[] = [
     context: "EPFL × Idiap",
     year: "2024",
     tier: "bench",
-    tags: ["research", "vision"],
+    tags: ["vision"],
     stack: ["Python", "PyTorch"],
     score: "F1 0.76",
     figures: [{ value: "0.76", label: "F1, baseline" }],
@@ -167,7 +181,7 @@ export const projects: Project[] = [
     context: "EPFL · CS-552",
     year: "2025",
     tier: "bench",
-    tags: ["llm", "fine-tuning"],
+    tags: ["llm"],
     stack: ["Qwen3-0.6B", "SFT", "DPO", "QLoRA", "RAG"],
     score: "+4 % · 1.1 → 0.5 GB",
     figures: [
@@ -183,12 +197,25 @@ export const projects: Project[] = [
     context: "Personal",
     year: "2026",
     tier: "bench",
-    tags: ["cuda"],
+    tags: ["hpc"],
     stack: ["CUDA", "C++"],
     score: "~20 kernels",
     figures: [{ value: "~20", label: "kernels" }],
     source: "github.com/anassee15/leetGPU",
     links: [{ label: "GitHub", href: "https://github.com/anassee15/leetGPU" }],
+  },
+  {
+    slug: "connect-four",
+    title: "Connect Four, read by a webcam",
+    pitch: "A webcam reads a real Connect Four board, and an AI picks its next move.",
+    context: "HES-SO · bachelor",
+    year: "2023",
+    tier: "extra",
+    tags: ["vision"],
+    stack: ["Python", "OpenCV", "Alpha-beta"],
+    score: "5 moves ahead",
+    figures: [{ value: "5", label: "moves ahead, alpha-beta search" }],
+    source: "Image processing II project, HES-SO, 2023. With David Crevoiserat.",
   },
 ];
 
