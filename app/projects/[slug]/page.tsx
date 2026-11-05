@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CaseLayout } from "@/components/project/CaseLayout";
+import { NextProject } from "@/components/project/NextProject";
 import { ProjectHeader } from "@/components/project/ProjectHeader";
 import { getCaseSlots } from "@/components/project/slots";
-import { getProjectBySlug } from "@/data/projects";
+import { getNextProject, getProjectBySlug } from "@/data/projects";
 import { getCaseStudy, getCaseStudySlugs } from "@/lib/content";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -32,6 +33,7 @@ export default async function ProjectPage({ params }: Props) {
     <main className="page-x">
       <ProjectHeader header={study.header} project={project} />
       <CaseLayout sections={study.sections} slots={getCaseSlots(project)} />
+      <NextProject project={getNextProject(slug)} />
     </main>
   );
 }
