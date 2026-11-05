@@ -117,10 +117,10 @@ export const projects: Project[] = [
       title: "Million lattice updates per second (MLUPS)",
       bars: [
         { label: "Serial", value: 21.6, display: "21.6" },
-        { label: "MPI, 128 ranks", value: 1323, display: "1,323" },
+        { label: "MPI, 128 ranks", value: 2128, display: "2,128" },
         { label: "CUDA, 1 GPU", value: 2265, display: "2,265", highlight: true },
       ],
-      note: "Benchmarks on SCITAS, EPFL. One GPU runs ~105× the serial version.",
+      note: "800 × 400 grid, SCITAS, EPFL. One GPU runs ~105× the serial version.",
     },
   },
   {
@@ -221,4 +221,10 @@ export const projects: Project[] = [
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
+}
+
+/** The project after this one in the list above, wrapping around to the first. */
+export function getNextProject(slug: string) {
+  const index = projects.findIndex((project) => project.slug === slug);
+  return projects[(index + 1) % projects.length];
 }
