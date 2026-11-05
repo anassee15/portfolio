@@ -25,7 +25,7 @@ export function MainProject() {
           </p>
           <p className="mt-3.5">
             <Link href={`/projects/${eva.slug}`} className="link">
-              Read the EVA case study →
+              Read the EVA case study <span aria-hidden>→</span>
             </Link>
           </p>
         </div>

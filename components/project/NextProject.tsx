@@ -10,7 +10,7 @@ export function NextProject({ project }: { project: Project }) {
           {project.context} · {project.year}
         </span>
         <span className="mt-1 block font-display text-[clamp(28px,4vw,44px)] leading-[1.02] font-extrabold decoration-ball decoration-[3px] underline-offset-[6px] group-hover:underline">
-          {project.title} →
+          {project.title} <span aria-hidden>→</span>
         </span>
       </Link>
     </Section>

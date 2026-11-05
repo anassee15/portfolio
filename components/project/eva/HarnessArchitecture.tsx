@@ -91,7 +91,7 @@ function KeyBox({ icon, title, text, children }: { icon: IconName; title: string
       </p>
       <p className="mt-1.5 max-w-[62ch] text-[13px] leading-snug text-ink-2">{text}</p>
       {/* On narrow screens the diagram keeps a readable size and scrolls sideways. */}
-      <div className="mt-4 overflow-x-auto" tabIndex={0}>
+      <div className="mt-4 overflow-x-auto" tabIndex={0} role="region" aria-label={`${title}, diagram`}>
         <div className="mx-auto max-w-[560px] min-w-[460px] @lg:min-w-0">{children}</div>
       </div>
     </div>

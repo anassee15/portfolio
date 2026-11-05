@@ -19,7 +19,7 @@ export function NoteLayout({ note, html }: { note: Note; html: string }) {
       <div className="prose note border-t border-rule pt-8" dangerouslySetInnerHTML={{ __html: html }} />
       <p className="mt-12 border-t border-rule pt-5">
         <Link href="/notes" className="link">
-          ← All notes
+          <span aria-hidden>←</span> All notes
         </Link>
       </p>
     </article>

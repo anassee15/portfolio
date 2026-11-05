@@ -28,8 +28,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={fontVariables}>
       <body className="min-h-dvh">
+        <a
+          href="#content"
+          className="sr-only z-50 bg-ink text-sm font-medium text-paper focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:px-3 focus:py-2"
+        >
+          Skip to content
+        </a>
         <Nav />
-        {children}
+        <div id="content">{children}</div>
         <Footer />
         <SpeedInsights />
         <Analytics />

@@ -26,7 +26,7 @@ export function SelectedWork() {
               <p className="max-w-[48ch]">{project.pitch}</p>
               <p className="mt-3">
                 <Link href={`/projects/${project.slug}`} className="link">
-                  Read more →
+                  Read more<span className="sr-only"> about {project.title}</span> <span aria-hidden>→</span>
                 </Link>
               </p>
             </div>
@@ -40,7 +40,7 @@ export function SelectedWork() {
       </ul>
       <p className="mt-2 border-t border-rule pt-5">
         <Link href="/projects" className="link">
-          All projects →
+          All projects <span aria-hidden>→</span>
         </Link>
       </p>
     </Section>
