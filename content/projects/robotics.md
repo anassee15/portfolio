@@ -20,3 +20,7 @@ Part one, the P3 project (Nov 2022 – Feb 2023): two NVIDIA robots to assemble 
 - Classification (EfficientNet-b0): 92 % accuracy, at 32 FPS. Detection: mAP 0.57 on the test set.
 
 The P3 was graded 6.0 / 6. Bachelor projects: this is where I learned to put a model on a robot, not a robotics specialty.
+
+## Try it
+
+What the robot sees through its own camera, 224 × 224 pixels, while the model looks for the target. Silent, 26 seconds.

@@ -21,6 +21,10 @@ Moderation usually stops at detection: the meme is flagged, or removed. We wante
 
 Means over repeated runs, EE-559 report, EPFL, 2026. These metrics are proxies: none of them says whether the repaired meme keeps its humour, and the report says so.
 
+## Try it
+
+An example I drew to show the idea: not a real output, and not from the dataset. The caption stays, only the picture changes, and the joke stops being cruel. Drag to compare.
+
 ## What I learned
 
 LoRA raised recall without making detection better: it moved the decision threshold, not the model's ability to tell memes apart. It also roughly halved visual similarity to the original, because the fine-tuned models wrote more aggressive edits.

@@ -22,6 +22,10 @@ Three full runs, and 172 skills written by the agent itself.
 - **But not faster.** In free exploration, runs with vision discover fewer items in 160 iterations (48 to 54, against about 65 text-only), and the golden sword takes 35 iterations instead of 20.
 - **Open models fall behind.** Mistral Small with Codestral plateaus around 16 items, against about 65 for GPT-4.1.
 
+## Try it
+
+A house built by the text-only agent, and one built by Vision Voyager, both on GPT-4.1. Drag to compare.
+
 ## What I learned
 
 Vision made the agent build better, not faster, and the metric we started with (items discovered) could not see that. The open models I could run were far from GPT-4.1: that gap is the question my master thesis picks up.
