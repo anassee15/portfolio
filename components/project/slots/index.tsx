@@ -1,5 +1,6 @@
 import { BarChart } from "@/components/charts/BarChart";
 import { Figures } from "@/components/charts/Figures";
+import { projectDrawings } from "@/components/projects/drawings";
 import type { Project } from "@/data/projects";
 import type { CaseSlots } from "../CaseLayout";
 import { evaSlots } from "./eva";
@@ -9,9 +10,19 @@ const slotsBySlug: Record<string, (project: Project) => CaseSlots> = {
   eva: evaSlots,
 };
 
-/** Until a project has its own slots, its results open with its chart, or its figures. */
+/** By default the system opens with the project's drawing, and the results with its chart, or its figures. */
 function defaultSlots(project: Project): CaseSlots {
+  const Drawing = projectDrawings[project.slug];
   return {
+    ...(Drawing && {
+      "the-system": {
+        before: (
+          <div className="mb-8 max-w-[560px]">
+            <Drawing />
+          </div>
+        ),
+      },
+    }),
     results: {
       before: (
         <div className="mb-8 max-w-[640px]">
@@ -27,5 +38,5 @@ function defaultSlots(project: Project): CaseSlots {
 }
 
 export function getCaseSlots(project: Project): CaseSlots {
-  return (slotsBySlug[project.slug] ?? defaultSlots)(project);
+  return { ...defaultSlots(project), ...slotsBySlug[project.slug]?.(project) };
 }

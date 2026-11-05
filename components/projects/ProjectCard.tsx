@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { tagLabels, type Figure, type Project } from "@/data/projects";
-import { cardDrawings } from "./drawings";
+import { projectDrawings } from "./drawings";
 
 /** A whole-card link: meta, title, two lines, the key figure, tags. The lead project spans two columns. */
 export function ProjectCard({ project }: { project: Project }) {
   const lead = project.tier === "lead";
-  const Drawing = cardDrawings[project.slug];
+  const Drawing = projectDrawings[project.slug];
   const figures = project.figures.slice(0, lead ? 2 : 1);
 
   return (
@@ -16,6 +16,14 @@ export function ProjectCard({ project }: { project: Project }) {
           lead && Drawing ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" : ""
         }`}
       >
+        {Drawing && !lead && (
+          <div
+            aria-hidden
+            className="flex h-[150px] items-center justify-center [&>div]:max-w-full [&_svg]:h-[150px] [&_svg]:w-auto [&_svg]:max-w-full"
+          >
+            <Drawing />
+          </div>
+        )}
         <div className="flex flex-col">
           <p className="meta">
             {project.year} · {project.context}
@@ -31,7 +39,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </dl>
           <p className="meta mt-4">{project.tags.map((tag) => tagLabels[tag]).join(" · ")}</p>
         </div>
-        {Drawing && (
+        {Drawing && lead && (
           <div aria-hidden className="order-first self-center lg:order-none">
             <Drawing />
           </div>
