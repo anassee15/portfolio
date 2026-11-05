@@ -22,6 +22,10 @@ The starting point was a serial D2Q9 Lattice Boltzmann solver: 21.6 million latt
 
 Benchmarks on SCITAS, EPFL, 2026.
 
+## Try it
+
+The same method, rewritten in WebGL for this page and running on your GPU: a fluid flows past a cylinder and leaves a Kármán vortex street behind it. Drag across the flow to stir it.
+
 ## What I learned
 
 Both versions hit the same wall: memory bandwidth, not compute. On the CPU, efficiency went above 100 % once a rank's slab fit in cache (most likely; I did not profile cache misses), and fell as soon as ranks shared a node's bandwidth. The lesson I wrote in the report: grow the problem with the core count.

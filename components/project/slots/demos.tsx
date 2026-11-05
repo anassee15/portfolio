@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BeforeAfter } from "@/components/demos/BeforeAfter";
+import { LbmSim } from "@/components/demos/LbmSim";
 import { PovVideo } from "@/components/demos/PovVideo";
 import { PartyMeme } from "@/components/ink/diagrams/PartyMeme";
 import type { CaseSlots } from "../CaseLayout";
@@ -47,4 +48,8 @@ export function roboticsSlots(): CaseSlots {
       caption="The robot's camera, with the model's detection drawn on top. HES-SO, 2023."
     />,
   );
+}
+
+export function lbmSlots(): CaseSlots {
+  return tryIt(<LbmSim />);
 }
