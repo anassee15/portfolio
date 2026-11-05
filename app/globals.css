@@ -122,6 +122,95 @@
     text-decoration-color: var(--ball);
   }
 
+  /* Notes: a longer reading column, with headings, code, maths and footnotes. */
+  .note {
+    max-width: 65ch;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .note h2 {
+    margin-top: 1.8em;
+    font: 800 clamp(26px, 3.4vw, 32px) / 1.05 var(--font-display);
+    text-transform: uppercase;
+  }
+  .note h3 {
+    margin-top: 1.5em;
+    font-weight: 700;
+  }
+  .note ol {
+    display: grid;
+    gap: 4px;
+    padding-left: 22px;
+    list-style: decimal;
+  }
+  .note blockquote {
+    border-left: 3px solid var(--ball);
+    padding-left: 16px;
+    color: var(--ink-2);
+  }
+  .note img {
+    max-width: 100%;
+    height: auto;
+  }
+  .note :not(pre) > code {
+    font: 0.86em var(--font-mono);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 0.08em 0.32em;
+  }
+  .note pre {
+    overflow-x: auto;
+    padding: 14px 16px;
+    border: 1px solid var(--rule);
+    font: 13.5px/1.6 var(--font-mono);
+    /* Shiki's css-variables theme: ink, greys, one orange. */
+    --shiki-background: var(--surface);
+    --shiki-foreground: var(--ink);
+    --shiki-token-keyword: var(--ball-text);
+    --shiki-token-constant: var(--ball-text);
+    --shiki-token-link: var(--ball-text);
+    --shiki-token-string: var(--ink-2);
+    --shiki-token-string-expression: var(--ink-2);
+    --shiki-token-parameter: var(--ink-2);
+    --shiki-token-function: var(--ink);
+    --shiki-token-comment: var(--muted);
+    --shiki-token-punctuation: var(--muted);
+  }
+  .note table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .note th,
+  .note td {
+    padding: 6px 18px 6px 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+  }
+  .note th {
+    font: 500 12px/1.5 var(--font-mono);
+    color: var(--muted);
+  }
+  .note .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 4px;
+  }
+  .note .footnotes {
+    margin-top: 3em;
+    border-top: 1px solid var(--rule);
+    padding-top: 1em;
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .note [data-footnote-ref] {
+    padding-inline: 1px;
+    font-size: 0.75em;
+    text-decoration: none;
+    color: var(--ball-text);
+  }
+
   .btn-primary {
     background: var(--ball-text);
     border-color: var(--ball-text);

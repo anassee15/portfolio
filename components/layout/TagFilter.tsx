@@ -1,17 +1,18 @@
 import Link from "next/link";
-import { tagLabels, type Project, type Tag } from "@/data/projects";
+
+export type TagOption = { tag: string | null; label: string; count: number };
+
+type TagFilterProps = {
+  /** Page the filter links to, e.g. "/projects". */
+  base: string;
+  options: TagOption[];
+  active: string | null;
+  /** For screen readers: "3 projects", "2 notes". */
+  noun: string;
+};
 
 /** Text buttons; the chosen tag lives in the URL (?tag=), so a filtered view can be shared. */
-export function TagFilter({ projects, active }: { projects: Project[]; active: Tag | null }) {
-  const options: { tag: Tag | null; label: string; count: number }[] = [
-    { tag: null, label: "All", count: projects.length },
-    ...(Object.keys(tagLabels) as Tag[]).map((tag) => ({
-      tag,
-      label: tagLabels[tag],
-      count: projects.filter((project) => project.tags.includes(tag)).length,
-    })),
-  ];
-
+export function TagFilter({ base, options, active, noun }: TagFilterProps) {
   return (
     <nav aria-label="Filter by tag">
       <ul className="flex flex-wrap gap-x-5 gap-y-2">
@@ -20,7 +21,7 @@ export function TagFilter({ projects, active }: { projects: Project[]; active: T
           return (
             <li key={label}>
               <Link
-                href={tag ? `/projects?tag=${tag}` : "/projects"}
+                href={tag ? `${base}?tag=${encodeURIComponent(tag)}` : base}
                 scroll={false}
                 aria-current={current ? "page" : undefined}
                 className={`text-[15px] font-medium underline-offset-[6px] ${
@@ -31,7 +32,9 @@ export function TagFilter({ projects, active }: { projects: Project[]; active: T
                 <span className="meta ml-1 text-[11px]" aria-hidden>
                   {count}
                 </span>
-                <span className="sr-only">, {count} projects</span>
+                <span className="sr-only">
+                  , {count} {noun}
+                </span>
               </Link>
             </li>
           );
