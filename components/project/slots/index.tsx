@@ -10,12 +10,13 @@ const slotsBySlug: Record<string, (project: Project) => CaseSlots> = {
   eva: evaSlots,
 };
 
-/** By default the system opens with the project's drawing, and the results with its chart, or its figures. */
-function defaultSlots(project: Project): CaseSlots {
+/** By default the system (or, on a short page, the situation) opens with the project's drawing, and the results with its chart, or its figures. */
+function defaultSlots(project: Project, sectionIds: string[]): CaseSlots {
   const Drawing = projectDrawings[project.slug];
+  const drawingAt = sectionIds.includes("the-system") ? "the-system" : "the-situation";
   return {
     ...(Drawing && {
-      "the-system": {
+      [drawingAt]: {
         before: (
           <div className="mb-8 max-w-[560px]">
             <Drawing />
@@ -37,6 +38,6 @@ function defaultSlots(project: Project): CaseSlots {
   };
 }
 
-export function getCaseSlots(project: Project): CaseSlots {
-  return { ...defaultSlots(project), ...slotsBySlug[project.slug]?.(project) };
+export function getCaseSlots(project: Project, sectionIds: string[]): CaseSlots {
+  return { ...defaultSlots(project, sectionIds), ...slotsBySlug[project.slug]?.(project) };
 }

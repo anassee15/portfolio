@@ -32,7 +32,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main className="page-x">
       <ProjectHeader header={study.header} project={project} />
-      <CaseLayout sections={study.sections} slots={getCaseSlots(project)} />
+      <CaseLayout sections={study.sections} slots={getCaseSlots(project, study.sections.map((section) => section.id))} />
       <NextProject project={getNextProject(slug)} />
     </main>
   );
