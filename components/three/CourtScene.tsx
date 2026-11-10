@@ -24,11 +24,8 @@ export type InkColors = { paper: string; ink: string; ball: string };
 type CourtSceneProps = {
   colors: InkColors;
   play: Play;
-  /** Changing this number re-samples the scene from noise. */
-  sample: number;
   active: boolean;
   maxDpr: number;
-  onPhase: (phase: Phase) => void;
   onPlayEnd: () => void;
   /** Called once the shaders are compiled and the first frame is about to be drawn. */
   onReady: () => void;
@@ -103,7 +100,7 @@ function PlayerMesh({ assets, player, groupRef }: { assets: Assets; player: Play
   );
 }
 
-function Court({ colors, play, sample, labels, pointer, onPhase, onPlayEnd }: Omit<CourtSceneProps, "active" | "maxDpr" | "onReady"> & {
+function Court({ colors, play, labels, pointer, onPlayEnd }: Omit<CourtSceneProps, "active" | "maxDpr" | "onReady"> & {
   labels: LabelRefs;
   pointer: React.RefObject<{ x: number; y: number }>;
 }) {
@@ -126,10 +123,6 @@ function Court({ colors, play, sample, labels, pointer, onPhase, onPlayEnd }: Om
     assets.colors.paper.value.setStyle(colors.paper, raw);
     assets.colors.ball.value.setStyle(colors.ball, raw);
   }, [assets, uniforms, colors]);
-
-  useEffect(() => {
-    noiseStart.current = -1;
-  }, [sample]);
 
   useEffect(() => {
     playStart.current = -1;
@@ -156,7 +149,6 @@ function Court({ colors, play, sample, labels, pointer, onPhase, onPlayEnd }: Om
     if (phase !== lastPhase.current) {
       lastPhase.current = phase;
       floor.drawPlay(agents, phase);
-      onPhase(phase);
     }
 
     const positions = ballsAt(t, agents);
@@ -322,7 +314,7 @@ export default function CourtScene({ active, maxDpr, onReady, ...sceneProps }: C
               labels.current[i] = span;
             }}
             aria-hidden
-            className="pointer-events-none absolute top-0 left-0 bg-paper px-1 font-mono text-[10px] leading-tight whitespace-nowrap text-ink-2 opacity-0 transition-opacity duration-300 data-[active=true]:text-ball-text"
+            className="pointer-events-none absolute top-0 left-0 bg-paper px-1 font-mono text-[0.625rem] leading-tight whitespace-nowrap text-ink-2 opacity-0 transition-opacity duration-300 data-[active=true]:text-ball-text"
           >
             {text}
           </span>

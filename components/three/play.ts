@@ -1,5 +1,5 @@
 /**
- * The basketball play acted out by EVA's architecture, with a real five:
+ * A multi-agent system played as a basketball set, with a real five:
  * the point guard is the router, three wings are specialised agents,
  * the center is the synthesis agent who scores the answer.
  * Pure geometry and data, no three.js.
@@ -7,18 +7,17 @@
 
 export type Vec3 = [number, number, number];
 
-/** A question and the agents the router calls for it (0 to 3, in parallel). */
+/** A request and the agents the router calls for it (0 to 3, in parallel). */
 export type Play = { question: string; agents: string[] };
 
-// Generic agent roles: EVA has seven (coverage, therapists, self-service, contact, info, premiums, offers).
 export const PLAYS: Play[] = [
-  { question: "Is physio covered, and who can I see nearby?", agents: ["coverage", "therapists"] },
-  { question: "Does my plan cover a new crown?", agents: ["coverage"] },
+  { question: "Find a ramen place near the station, and check whether I'm free at noon.", agents: ["search", "calendar"] },
+  { question: "Why does this test fail?", agents: ["code"] },
   {
-    question: "Is acupuncture covered, who practises it near me, and how do I send the bill?",
-    agents: ["coverage", "therapists", "self-service"],
+    question: "What's the weather in Lausanne, when is my next meeting, and what's in the news?",
+    agents: ["weather", "calendar", "news"],
   },
-  { question: "How much will my premium be next year?", agents: ["premiums"] },
+  { question: "Summarise this 40-page report in five bullet points.", agents: ["documents"] },
   { question: "Thanks, that's all!", agents: [] },
 ];
 
@@ -36,7 +35,7 @@ export const ENTRY: Vec3 = [-6, 1, 4.2];
 export const RIM: Vec3 = [0, 2.75, HOOP_Z + 0.2];
 const HAND_HEIGHT = 1.25;
 
-/** What the play is doing; the trace under the court follows these steps. */
+/** What the play is doing, step by step. */
 export enum Phase {
   Question,
   ToAgents,

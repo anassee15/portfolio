@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { PLAYS, Phase, type Play } from "@/components/three/play";
+import { PLAYS } from "@/components/three/play";
 import { useCssVariables, useInView, useMediaQuery, usePageLoaded, usePrefersReducedMotion, useWebGL } from "@/lib/hooks";
 
 // three.js is only downloaded once the page has loaded and the court is close to the viewport.
@@ -12,7 +12,7 @@ const COLOR_TOKENS = ["paper", "ink", "ball"] as const;
 // The still frame (public/court) shows the three-agent play, after the passes.
 const STILL_PLAY = PLAYS[2];
 const DESCRIPTION =
-  "A half basketball court drawn in ink and screentone, where EVA answers a question as a team play: the router plays point guard and passes to the specialised agents it needs, who pass to the synthesis agent, who scores the answer.";
+  "A half basketball court drawn in ink and screentone, where a multi-agent system answers a request as a team play: the router plays point guard and passes to the specialised agents it needs, who pass to the synthesis agent, who scores the answer.";
 
 export function CourtFigure() {
   const frame = useRef<HTMLDivElement>(null);
@@ -24,8 +24,6 @@ export function CourtFigure() {
   const colors = useCssVariables(COLOR_TOKENS);
   const loaded = usePageLoaded();
   const [playIndex, setPlayIndex] = useState(0);
-  const [sample, setSample] = useState(0);
-  const [phase, setPhase] = useState(Phase.Scored);
   const [sceneReady, setSceneReady] = useState(false);
   const markSceneReady = useCallback(() => setSceneReady(true), []);
 
@@ -44,63 +42,23 @@ export function CourtFigure() {
           <CourtScene
             colors={colors}
             play={play}
-            sample={sample}
             active={visible}
             maxDpr={touch ? 1 : 1.5}
-            onPhase={setPhase}
             onPlayEnd={nextPlay}
             onReady={markSceneReady}
           />
         )}
       </div>
-      <figcaption className="mt-3 flex items-start justify-between gap-4">
-        <PlayTrace play={play} phase={live ? phase : Phase.Scored} />
-        {live && (
-          <button
-            type="button"
-            onClick={() => {
-              nextPlay();
-              setSample((n) => n + 1);
-            }}
-            className="meta flex-none cursor-pointer border border-ink px-2.5 py-1.5 text-[11px] text-ink"
-          >
-            Next question
-          </button>
-        )}
+      <figcaption className="mt-3">
+        <p className="text-[0.9375rem] leading-snug font-medium">Agentic systems, drawn as a basketball play</p>
+        <p className="meta mt-0.5">I see them as a team sport. One request, one possession.</p>
+        {/* The request being played; it changes with each play. */}
+        <p className="mt-4 min-h-[2lh] text-[0.9375rem] leading-snug">
+          <span className="meta mr-2">Someone asks</span>“{play.question}”
+        </p>
       </figcaption>
     </figure>
   );
-}
-
-/** The agent trace of the current play, filled in as the ball moves. */
-function PlayTrace({ play, phase }: { play: Play; phase: Phase }) {
-  const steps = [
-    { at: Phase.ToAgents, text: `router → ${agentsText(play.agents)}` },
-    { at: Phase.ToSynthesis, text: `${play.agents.length ? "agents" : "router"} → synthesis` },
-    { at: Phase.Scored, text: "synthesis → answer, in the policyholder's language" },
-  ];
-  const latest = steps.findLast((step) => phase >= step.at);
-
-  return (
-    <div className="min-w-0 font-mono text-[11px] leading-relaxed">
-      <p className="min-h-[3.2em] text-ink">“{play.question}”</p>
-      <ol className="mt-1">
-        {steps.map((step) => (
-          <li
-            key={step.at}
-            className={phase < step.at ? "text-muted" : step === latest ? "text-ball-text" : "text-ink-2"}
-          >
-            {step.text}
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-}
-
-function agentsText(agents: string[]) {
-  if (agents.length === 0) return "no agent needed";
-  return agents.length === 1 ? agents[0] : `${agents.join(" + ")}, in parallel`;
 }
 
 const STILL_SIZES = "(min-width: 768px) 45vw, 100vw";
