@@ -5,7 +5,7 @@ import { getNotes } from "@/lib/notes";
 export async function Footer() {
   const hasNotes = (await getNotes()).length > 0;
   return (
-    <footer className="page-x meta mt-16 flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-rule py-4 text-[11px]">
+    <footer className="page-x meta mt-16 flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-rule py-4 text-[0.6875rem]">
       <span>
         {site.name} · {site.location}
       </span>

@@ -52,7 +52,12 @@
 }
 
 @layer base {
+  /*
+   * Text sizes are in rem. The root stays at the browser default (16px) up to
+   * 1280px, then grows with the viewport: 19.2px at 1920px, at most 22px.
+   */
   html {
+    font-size: clamp(100%, 0.5vw + 0.6rem, 137.5%);
     background: var(--paper);
     color: var(--ink);
     -webkit-text-size-adjust: 100%;
@@ -60,7 +65,7 @@
 
   body {
     font-family: var(--font-sans);
-    font-size: 15px;
+    font-size: 0.9375rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
@@ -83,7 +88,7 @@
   }
 
   .meta {
-    font: 500 12px/1.5 var(--font-mono);
+    font: 500 0.75rem/1.5 var(--font-mono);
     color: var(--muted);
   }
 
@@ -97,8 +102,8 @@
 
   .btn {
     display: inline-block;
-    font: 500 14px/1 var(--font-sans);
-    padding: 11px 15px;
+    font: 500 0.875rem/1 var(--font-sans);
+    padding: 0.8em 1.07em;
     border: 1px solid var(--ink);
   }
 
@@ -125,12 +130,12 @@
   /* Notes: a longer reading column, with headings, code, maths and footnotes. */
   .note {
     max-width: 65ch;
-    font-size: 17px;
+    font-size: 1.0625rem;
     line-height: 1.65;
   }
   .note h2 {
     margin-top: 1.8em;
-    font: 800 clamp(26px, 3.4vw, 32px) / 1.05 var(--font-display);
+    font: 800 clamp(1.625rem, 3.4vw, 2rem) / 1.05 var(--font-display);
     text-transform: uppercase;
   }
   .note h3 {
@@ -162,7 +167,7 @@
     overflow-x: auto;
     padding: 14px 16px;
     border: 1px solid var(--rule);
-    font: 13.5px/1.6 var(--font-mono);
+    font: 0.84375rem/1.6 var(--font-mono);
     /* Shiki's css-variables theme: ink, greys, one orange. */
     --shiki-background: var(--surface);
     --shiki-foreground: var(--ink);
@@ -180,7 +185,7 @@
     display: block;
     overflow-x: auto;
     border-collapse: collapse;
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
   .note th,
   .note td {
@@ -189,7 +194,7 @@
     text-align: left;
   }
   .note th {
-    font: 500 12px/1.5 var(--font-mono);
+    font: 500 0.75rem/1.5 var(--font-mono);
     color: var(--muted);
   }
   .note .katex-display {
@@ -201,7 +206,7 @@
     margin-top: 3em;
     border-top: 1px solid var(--rule);
     padding-top: 1em;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--ink-2);
   }
   .note [data-footnote-ref] {

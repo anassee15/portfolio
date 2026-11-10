@@ -12,10 +12,10 @@ export function MainProject() {
     <Section label="Main project" id="eva">
       <div className="grid items-start gap-x-10 gap-y-5 md:grid-cols-2">
         <div>
-          <h2 className="mb-3 font-display text-[clamp(26px,3.6vw,36px)] leading-[1.02] font-extrabold">
+          <h2 className="mb-3 font-display text-[clamp(1.625rem,3.6vw,2.25rem)] leading-[1.02] font-extrabold">
             Conversational agentic systems, and their evaluation
           </h2>
-          <p className="max-w-[62ch] text-[17px]">
+          <p className="max-w-[62ch] text-[1.0625rem]">
             EVA is the conversational agent of Groupe Mutuel, a Swiss health insurer. In the app, it tells policyholders
             what their plan covers, in four languages.
           </p>
@@ -37,7 +37,7 @@ export function MainProject() {
       </div>
 
       <div className="mt-[30px]">
-        <h3 className="mb-1.5 font-display text-[23px] leading-[1.05] font-extrabold">How the harness works</h3>
+        <h3 className="mb-1.5 font-display text-[1.4375rem] leading-[1.05] font-extrabold">How the harness works</h3>
         <p className="mb-5 max-w-[62ch] text-ink-2">
           Simulate, then judge, then measure. The two steps are decoupled, so a new judge can grade old conversations.
         </p>

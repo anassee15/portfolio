@@ -85,11 +85,11 @@ const RESULTS: Block[] = [
 function KeyBox({ icon, title, text, children }: { icon: IconName; title: string; text: string; children: React.ReactNode }) {
   return (
     <div className="min-w-0 border-2 border-ink bg-paper p-3 @lg:p-4">
-      <p className="flex items-center gap-2 text-[15px] leading-snug font-bold">
+      <p className="flex items-center gap-2 text-[0.9375rem] leading-snug font-bold">
         <Icon name={icon} />
         {title}
       </p>
-      <p className="mt-1.5 max-w-[62ch] text-[13px] leading-snug text-ink-2">{text}</p>
+      <p className="mt-1.5 max-w-[62ch] text-[0.8125rem] leading-snug text-ink-2">{text}</p>
       {/* On narrow screens the diagram keeps a readable size and scrolls sideways. */}
       <div className="mt-4 overflow-x-auto" tabIndex={0} role="region" aria-label={`${title}, diagram`}>
         <div className="mx-auto max-w-[560px] min-w-[460px] @lg:min-w-0">{children}</div>
@@ -149,7 +149,7 @@ export function HarnessArchitecture() {
         </Layer>
       </div>
 
-      <figcaption className="meta mt-4 text-[11px]">
+      <figcaption className="meta mt-4 text-[0.6875rem]">
         After the thesis deck. Every run is reproducible: commit, code and document fingerprints, dataset hash. 219
         tests. Built alone in about six weeks.
       </figcaption>

@@ -61,8 +61,8 @@ export function EvaArchitecture() {
             </div>
 
             <div className="order-1 border-2 border-ink bg-paper p-4 @3xl:order-2">
-              <p className="font-display text-[34px] leading-none font-black">EVA</p>
-              <p className="mt-2 text-[13px] leading-snug text-ink-2">
+              <p className="font-display text-[2.125rem] leading-none font-black">EVA</p>
+              <p className="mt-2 text-[0.8125rem] leading-snug text-ink-2">
                 <span className="text-ball-text">●</span> Guardrails and language detection first
                 <span className="sr-only"> (my work)</span>. Then a router calls 0 to n of 7 specialised agents, in
                 parallel, and a synthesis agent writes one answer in the policyholder&apos;s language.
@@ -70,7 +70,7 @@ export function EvaArchitecture() {
               <div className="mx-auto mt-3 max-w-[420px]">
                 <EvaBrain />
               </div>
-              <p className="meta mt-2 text-[11px]">7 agents: {AGENT_ROLES.join(" · ")}</p>
+              <p className="meta mt-2 text-[0.6875rem]">7 agents: {AGENT_ROLES.join(" · ")}</p>
             </div>
 
             <div className="order-3 grid content-start gap-3 @lg:grid-cols-2 @3xl:grid-cols-1">
@@ -98,7 +98,7 @@ export function EvaArchitecture() {
         </Layer>
       </div>
 
-      <figcaption className="meta mt-4 text-[11px]">
+      <figcaption className="meta mt-4 text-[0.6875rem]">
         <span className="text-ball-text">●</span> my work. After the Groupe Mutuel poster, Oct 2026; internal names
         left out.
       </figcaption>

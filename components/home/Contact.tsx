@@ -4,19 +4,19 @@ import { site } from "@/data/site";
 export function Contact() {
   return (
     <Section label="Contact" id="contact">
-      <h2 className="mb-2 font-display text-[clamp(26px,3.6vw,36px)] leading-[1.02] font-extrabold">
+      <h2 className="mb-2 font-display text-[clamp(1.625rem,3.6vw,2.25rem)] leading-[1.02] font-extrabold">
         Available from {site.availableFrom}
       </h2>
-      <p className="mb-7 max-w-[62ch] text-[17px]">
+      <p className="mb-7 max-w-[62ch] text-[1.0625rem]">
         I&apos;m looking for a role as {listOf(site.roles)}, in Switzerland.
       </p>
       <a
         href={`mailto:${site.email}`}
-        className="font-display text-[clamp(25px,7vw,64px)] leading-none font-extrabold [overflow-wrap:anywhere] decoration-ball decoration-[3px] underline-offset-[6px] hover:underline"
+        className="font-display text-[clamp(1.5625rem,7vw,4rem)] leading-none font-extrabold [overflow-wrap:anywhere] decoration-ball decoration-[3px] underline-offset-[6px] hover:underline"
       >
         {site.email}
       </a>
-      <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
+      <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
         <li>
           <a href={site.links.linkedin} className="link">
             LinkedIn

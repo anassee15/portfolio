@@ -42,7 +42,7 @@ export function PovVideo({ src, poster, size, label, caption }: PovVideoProps) {
           </button>
         )}
       </div>
-      <figcaption className="meta mt-2 text-[11px]">{caption}</figcaption>
+      <figcaption className="meta mt-2 text-[0.6875rem]">{caption}</figcaption>
     </figure>
   );
 }

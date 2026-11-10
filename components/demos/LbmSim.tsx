@@ -129,7 +129,7 @@ export function LbmSim() {
         >
           Restart
         </button>
-        <figcaption className="meta text-[11px]">
+        <figcaption className="meta text-[0.6875rem]">
           D2Q9 on your GPU, {NX} × {NY} cells. Ink and orange: the two spins of the vorticity.
         </figcaption>
       </div>

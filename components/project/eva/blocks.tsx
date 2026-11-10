@@ -9,7 +9,7 @@ export function Card({ icon, kicker, title, text, mine }: Block) {
     <div className={`flex gap-2.5 border bg-paper px-3 py-2.5 ${mine ? "border-ball" : "border-rule"}`}>
       <Icon name={icon} className="mt-1 text-ink-2" />
       <div>
-        <p className={`font-mono text-[10px] tracking-[0.06em] uppercase ${mine ? "text-ball-text" : "text-muted"}`}>
+        <p className={`font-mono text-[0.625rem] tracking-[0.06em] uppercase ${mine ? "text-ball-text" : "text-muted"}`}>
           {mine && <span aria-hidden>● </span>}
           {kicker}
           {mine && <span className="sr-only"> (my work)</span>}
@@ -24,7 +24,7 @@ export function Card({ icon, kicker, title, text, mine }: Block) {
 export function Layer({ index, name, children }: { index: number; name: string; children: React.ReactNode }) {
   return (
     <div role="group" aria-label={name}>
-      <p className="meta mb-2 flex items-center gap-3 text-[11px] tracking-[0.06em] uppercase">
+      <p className="meta mb-2 flex items-center gap-3 text-[0.6875rem] tracking-[0.06em] uppercase">
         <span>
           {index} · {name}
         </span>

@@ -24,12 +24,12 @@ export function TagFilter({ base, options, active, noun }: TagFilterProps) {
                 href={tag ? `${base}?tag=${encodeURIComponent(tag)}` : base}
                 scroll={false}
                 aria-current={current ? "page" : undefined}
-                className={`text-[15px] font-medium underline-offset-[6px] ${
+                className={`text-[0.9375rem] font-medium underline-offset-[6px] ${
                   current ? "underline decoration-ball decoration-2" : "text-ink-2 hover:text-ink"
                 }`}
               >
                 {label}
-                <span className="meta ml-1 text-[11px]" aria-hidden>
+                <span className="meta ml-1 text-[0.6875rem]" aria-hidden>
                   {count}
                 </span>
                 <span className="sr-only">

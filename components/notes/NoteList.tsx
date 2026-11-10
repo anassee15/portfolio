@@ -32,7 +32,7 @@ export function NoteList({ notes, active }: { notes: Note[]; active: string | nu
             <div>
               <Link
                 href={`/notes/${note.slug}`}
-                className="font-display text-[clamp(24px,3.4vw,32px)] leading-[1.05] font-extrabold decoration-ball decoration-[3px] underline-offset-[5px] hover:underline"
+                className="font-display text-[clamp(1.5rem,3.4vw,2rem)] leading-[1.05] font-extrabold decoration-ball decoration-[3px] underline-offset-[5px] hover:underline"
               >
                 {note.title}
               </Link>

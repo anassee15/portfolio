@@ -16,8 +16,8 @@ export function RunsChart() {
   return (
     <figure>
       <figcaption>
-        <p className="text-[13px] font-medium">The same question, replayed {RUNS} times</p>
-        <p className="meta mb-3 text-[11px]">Each try succeeds 70 % of the time. Replay to roll again.</p>
+        <p className="text-[0.8125rem] font-medium">The same question, replayed {RUNS} times</p>
+        <p className="meta mb-3 text-[0.6875rem]">Each try succeeds 70 % of the time. Replay to roll again.</p>
       </figcaption>
 
       <ol className="flex gap-3" aria-label="Results of the five tries">
@@ -32,7 +32,7 @@ export function RunsChart() {
         ))}
       </ol>
 
-      <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-[13px]" aria-live="polite">
+      <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-[0.8125rem]" aria-live="polite">
         <dt className="font-bold">pass@5</dt>
         <dd className="text-ink-2">{passAtK ? "pass: one success is enough" : "fail: not a single success"}</dd>
         <dt className="font-bold">pass^5</dt>
@@ -44,7 +44,7 @@ export function RunsChart() {
       <button
         type="button"
         onClick={() => setRuns(Array.from({ length: RUNS }, () => Math.random() < SUCCESS_RATE))}
-        className="meta mt-4 cursor-pointer border border-ink px-2.5 py-1.5 text-[11px] text-ink"
+        className="meta mt-4 cursor-pointer border border-ink px-2.5 py-1.5 text-[0.6875rem] text-ink"
       >
         Replay
       </button>

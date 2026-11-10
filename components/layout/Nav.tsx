@@ -10,7 +10,7 @@ export async function Nav() {
       <nav aria-label="Main" className="flex items-center gap-5 py-4 sm:gap-6">
         <Link
           href="/"
-          className="mr-auto font-display text-[17px] leading-none font-extrabold tracking-[0.03em] uppercase"
+          className="mr-auto font-display text-[1.0625rem] leading-none font-extrabold tracking-[0.03em] uppercase"
         >
           {site.name}
         </Link>

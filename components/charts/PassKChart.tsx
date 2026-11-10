@@ -30,21 +30,21 @@ export function PassKChart() {
         <div className="grid gap-4 text-sm">
           <dl className="grid gap-4">
             <div>
-              <dt className="font-mono text-[13px] font-medium">pass@k</dt>
+              <dt className="font-mono text-[0.8125rem] font-medium">pass@k</dt>
               <dd className="mt-0.5 text-ink-2">
                 At least one of k runs passes. It climbs fast: {percent(passAtK(K_MAX))} at k = {K_MAX}. That is what a
                 demo shows.
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[13px] font-medium text-ball-text">pass^k</dt>
+              <dt className="font-mono text-[0.8125rem] font-medium text-ball-text">pass^k</dt>
               <dd className="mt-0.5 text-ink-2">
                 All k runs pass. It falls just as fast: {percent(passHatK(K_MAX))} at k = {K_MAX}. That is what a
                 policyholder who asks again expects.
               </dd>
             </div>
           </dl>
-          <p className="meta text-[11px]">The harness runs each situation k times and reports both, per use case.</p>
+          <p className="meta text-[0.6875rem]">The harness runs each situation k times and reports both, per use case.</p>
         </div>
       </div>
     </div>

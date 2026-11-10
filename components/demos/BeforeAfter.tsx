@@ -51,7 +51,7 @@ export function BeforeAfter({ before, after, ratio, caption }: BeforeAfterProps)
           className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
         />
       </div>
-      <figcaption className="meta mt-2 text-[11px]">{caption}</figcaption>
+      <figcaption className="meta mt-2 text-[0.6875rem]">{caption}</figcaption>
     </figure>
   );
 }

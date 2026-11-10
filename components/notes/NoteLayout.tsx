@@ -10,10 +10,10 @@ export function NoteLayout({ note, html }: { note: Note; html: string }) {
           <time dateTime={note.date}>{note.dateLabel}</time> · {note.minutes} min read
           {note.draft && " · draft"}
         </p>
-        <h1 className="mt-2.5 mb-4 font-display text-[clamp(40px,7vw,64px)] leading-[0.92] font-black uppercase">
+        <h1 className="mt-2.5 mb-4 font-display text-[clamp(2.5rem,7vw,4rem)] leading-[0.92] font-black uppercase">
           {note.title}
         </h1>
-        <p className="text-[19px] leading-normal text-ink-2">{note.summary}</p>
+        <p className="text-[1.1875rem] leading-normal text-ink-2">{note.summary}</p>
         {note.tags.length > 0 && <p className="meta mt-4">{note.tags.join(" · ")}</p>}
       </header>
       <div className="prose note border-t border-rule pt-8" dangerouslySetInnerHTML={{ __html: html }} />

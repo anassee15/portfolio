@@ -33,7 +33,7 @@ export function EvaReplay() {
 
   return (
     <div ref={frame}>
-      <p className="meta mb-3 text-[11px]">Harness situation, anonymised. The policyholder is simulated.</p>
+      <p className="meta mb-3 text-[0.6875rem]">Harness situation, anonymised. The policyholder is simulated.</p>
 
       <ol className="grid gap-2" aria-live="polite">
         {conversation.slice(0, step).map((message, i) => (
@@ -45,7 +45,7 @@ export function EvaReplay() {
                 : "border-rule bg-surface"
             }`}
           >
-            <small className="mb-0.5 block font-mono text-[10px] opacity-70">
+            <small className="mb-0.5 block font-mono text-[0.625rem] opacity-70">
               {message.from === "eva" ? "EVA" : "simulated policyholder"}
             </small>
             {message.text}
@@ -59,7 +59,7 @@ export function EvaReplay() {
         <button
           type="button"
           onClick={() => setRun((n) => n + 1)}
-          className="meta mt-4 cursor-pointer border border-ink px-2.5 py-1.5 text-[11px] text-ink"
+          className="meta mt-4 cursor-pointer border border-ink px-2.5 py-1.5 text-[0.6875rem] text-ink"
         >
           Replay
         </button>
@@ -70,9 +70,9 @@ export function EvaReplay() {
 
 function BehindTheAnswer() {
   return (
-    <div className="mt-5 grid gap-4 border-t border-rule pt-4 text-[13px]">
+    <div className="mt-5 grid gap-4 border-t border-rule pt-4 text-[0.8125rem]">
       <div>
-        <p className="meta mb-1.5 text-[11px] uppercase">Trajectory</p>
+        <p className="meta mb-1.5 text-[0.6875rem] uppercase">Trajectory</p>
         <ol className="grid gap-1 font-mono text-xs text-ink-2">
           {trajectory.map((step, i) => (
             <li key={step}>
@@ -82,7 +82,7 @@ function BehindTheAnswer() {
         </ol>
       </div>
       <div>
-        <p className="meta mb-1.5 text-[11px] uppercase">Judges</p>
+        <p className="meta mb-1.5 text-[0.6875rem] uppercase">Judges</p>
         <ul className="grid gap-1">
           {verdicts.map(({ claim, verdict }) => (
             <li key={claim} className="flex justify-between gap-3">

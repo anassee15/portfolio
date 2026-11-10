@@ -20,7 +20,7 @@ export function SelectedWork() {
               <p className="meta">
                 {project.context} · {project.year}
               </p>
-              <h3 className="mt-1 mb-2 font-display text-[clamp(23px,2.6vw,28px)] leading-[1.05] font-extrabold">
+              <h3 className="mt-1 mb-2 font-display text-[clamp(1.4375rem,2.6vw,1.75rem)] leading-[1.05] font-extrabold">
                 {project.title}
               </h3>
               <p className="max-w-[48ch]">{project.pitch}</p>

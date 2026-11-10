@@ -28,10 +28,10 @@ export function ProjectCard({ project }: { project: Project }) {
           <p className="meta">
             {project.year} · {project.context}
           </p>
-          <h2 className="mt-1.5 font-display text-[clamp(23px,2.4vw,27px)] leading-[1.05] font-extrabold decoration-ball decoration-2 underline-offset-4 group-hover:underline">
+          <h2 className="mt-1.5 font-display text-[clamp(1.4375rem,2.4vw,1.6875rem)] leading-[1.05] font-extrabold decoration-ball decoration-2 underline-offset-4 group-hover:underline">
             {project.title}
           </h2>
-          <p className={`mt-2 max-w-[52ch] ${lead ? "" : "line-clamp-2"} text-[14px] leading-snug text-ink-2`}>{project.pitch}</p>
+          <p className={`mt-2 max-w-[52ch] ${lead ? "" : "line-clamp-2"} text-[0.875rem] leading-snug text-ink-2`}>{project.pitch}</p>
           <dl className="mt-auto flex flex-wrap gap-x-8 gap-y-3 pt-7">
             {figures.map((figure) => (
               <CardFigure key={figure.label} figure={figure} />
@@ -52,8 +52,8 @@ export function ProjectCard({ project }: { project: Project }) {
 function CardFigure({ figure }: { figure: Figure }) {
   return (
     <div className="flex flex-col-reverse">
-      <dt className="mt-1 text-[13px] leading-snug text-ink-2">{figure.label}</dt>
-      <dd className="font-display text-[34px] leading-none font-extrabold whitespace-nowrap tabular-nums">
+      <dt className="mt-1 text-[0.8125rem] leading-snug text-ink-2">{figure.label}</dt>
+      <dd className="font-display text-[2.125rem] leading-none font-extrabold whitespace-nowrap tabular-nums">
         {figure.value}
       </dd>
     </div>

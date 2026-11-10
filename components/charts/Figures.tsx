@@ -16,7 +16,7 @@ export function Figures({ figures, source, compact }: { figures: Figure[]; sourc
           <Item key={figure.label} figure={figure} />
         ))}
       </dl>
-      <p className="meta mt-5 text-[11px]">{source}</p>
+      <p className="meta mt-5 text-[0.6875rem]">{source}</p>
     </div>
   );
 }
@@ -30,8 +30,8 @@ function CompactFigures({ figures, source }: { figures: Figure[]; source: string
           const [prefix, digits, suffix] = splitValue(value);
           return (
             <div key={label} className="flex flex-col-reverse">
-              <dt className="mt-1.5 font-mono text-[11px] tracking-[0.06em] text-ink-2 uppercase">{label}</dt>
-              <dd className="font-display text-[clamp(30px,3.2vw,38px)] leading-[0.85] font-black whitespace-nowrap tabular-nums">
+              <dt className="mt-1.5 font-mono text-[0.6875rem] tracking-[0.06em] text-ink-2 uppercase">{label}</dt>
+              <dd className="font-display text-[clamp(1.875rem,3.2vw,2.375rem)] leading-[0.85] font-black whitespace-nowrap tabular-nums">
                 {prefix && <span className="text-[0.6em] font-bold text-ink-2">{prefix.trim()}</span>}
                 {digits}
                 {suffix && <span className="ml-[0.04em] text-[0.6em]">{suffix}</span>}
@@ -40,7 +40,7 @@ function CompactFigures({ figures, source }: { figures: Figure[]; source: string
           );
         })}
       </dl>
-      <p className="meta mt-4 text-[11px]">{source}</p>
+      <p className="meta mt-4 text-[0.6875rem]">{source}</p>
     </div>
   );
 }
@@ -55,10 +55,10 @@ function Item({ figure, big, className }: { figure: Figure; big?: boolean; class
   const [prefix, digits, suffix] = splitValue(figure.value);
   return (
     <div className={`flex flex-col-reverse ${className ?? ""}`}>
-      <dt className="mt-2 font-mono text-[11px] leading-snug tracking-[0.06em] text-ink-2 uppercase">{figure.label}</dt>
+      <dt className="mt-2 font-mono text-[0.6875rem] leading-snug tracking-[0.06em] text-ink-2 uppercase">{figure.label}</dt>
       <dd
         className={`font-display leading-[0.85] font-black whitespace-nowrap tabular-nums ${
-          big ? "text-[clamp(72px,10vw,112px)]" : "text-[clamp(44px,5.4vw,64px)]"
+          big ? "text-[clamp(4.5rem,10vw,7rem)]" : "text-[clamp(2.75rem,5.4vw,4rem)]"
         }`}
       >
         {prefix && <span className="mr-[0.08em] text-[0.56em] font-bold text-ink-2">{prefix.trim()}</span>}

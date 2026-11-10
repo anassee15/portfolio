@@ -23,9 +23,9 @@ export function MoreWork() {
                 <span className="meta ml-2">
                   {project.context} · {project.year}
                 </span>
-                <span className="mt-0.5 block text-[14px] leading-snug text-ink-2">{project.pitch}</span>
+                <span className="mt-0.5 block text-[0.875rem] leading-snug text-ink-2">{project.pitch}</span>
               </span>
-              <span className="text-[15px] font-medium whitespace-nowrap tabular-nums sm:text-right">
+              <span className="text-[0.9375rem] font-medium whitespace-nowrap tabular-nums sm:text-right">
                 {project.score ?? project.figures[0].value}
               </span>
             </Link>

@@ -11,11 +11,11 @@ export function BarChart({ title, bars, note }: BarChartData) {
 
   return (
     <figure>
-      <figcaption className="mb-3 text-[13px] font-medium">{title}</figcaption>
+      <figcaption className="mb-3 text-[0.8125rem] font-medium">{title}</figcaption>
       <ul className="grid gap-2.5">
         {bars.map((bar) => (
           <li key={bar.label}>
-            <p className="mb-1 text-[12px] leading-tight text-ink-2">{bar.label}</p>
+            <p className="mb-1 text-[0.75rem] leading-tight text-ink-2">{bar.label}</p>
             {/* Room on the right for the value of the longest bar. */}
             <div className="relative mr-14 h-3.5" aria-hidden>
               <div
@@ -26,7 +26,7 @@ export function BarChart({ title, bars, note }: BarChartData) {
                 <div className={`absolute inset-y-0 left-0 ${bar.highlight ? "bg-ball" : "bg-bar"}`} style={{ width: pct(bar.low) }} />
               )}
               <span
-                className="absolute top-1/2 ml-2 -translate-y-1/2 text-[13px] font-medium whitespace-nowrap tabular-nums"
+                className="absolute top-1/2 ml-2 -translate-y-1/2 text-[0.8125rem] font-medium whitespace-nowrap tabular-nums"
                 style={{ left: pct(bar.value) }}
               >
                 {bar.display}
@@ -36,7 +36,7 @@ export function BarChart({ title, bars, note }: BarChartData) {
           </li>
         ))}
       </ul>
-      <p className="meta mt-3 text-[11px]">{note}</p>
+      <p className="meta mt-3 text-[0.6875rem]">{note}</p>
     </figure>
   );
 }

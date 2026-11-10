@@ -24,8 +24,8 @@ export default async function NotesPage() {
             RSS
           </a>
         </p>
-        <h1 className="mt-2.5 mb-4 font-display text-[clamp(44px,8vw,80px)] leading-[0.9] font-black uppercase">Notes</h1>
-        <p className="max-w-[52ch] text-[19px] leading-normal">
+        <h1 className="mt-2.5 mb-4 font-display text-[clamp(2.75rem,8vw,5rem)] leading-[0.9] font-black uppercase">Notes</h1>
+        <p className="max-w-[52ch] text-[1.1875rem] leading-normal">
           Notes on what I build and what I like: AI, GPUs, basketball, manga, games.
         </p>
       </header>
