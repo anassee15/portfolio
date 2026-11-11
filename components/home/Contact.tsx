@@ -5,10 +5,10 @@ export function Contact() {
   return (
     <Section label="Contact" id="contact">
       <h2 className="mb-2 font-display text-[clamp(1.625rem,3.6vw,2.25rem)] leading-[1.02] font-extrabold">
-        Available from {site.availableFrom}
+        Let&apos;s talk
       </h2>
       <p className="mb-7 max-w-[62ch] text-[1.0625rem]">
-        I&apos;m looking for a role as {listOf(site.roles)}, in Switzerland.
+        I&apos;m looking for a role as {listOf(site.roles)}.
       </p>
       <a
         href={`mailto:${site.email}`}
