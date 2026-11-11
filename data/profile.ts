@@ -46,7 +46,7 @@ export const experience: PathEntry[] = [
     logo: "groupe-mutuel.svg",
     roles: [
       {
-        title: "Master thesis · Agentic evaluation & open-weight migration",
+        title: "AI researcher engineer",
         dates: "2026 – 27",
         detail:
           "Multi-turn evaluation of a multi-agent assistant: simulated policyholders, LLM judges, pass^k. It gates feature rollouts in production. Now moving the assistant to open-weight models.",
@@ -96,7 +96,7 @@ export const education: PathEntry[] = [
     logo: "epfl.svg",
     roles: [
       {
-        title: "MSc Data Science",
+        title: "Master in Data Science",
         dates: "2023 – 27",
         detail:
           "Machine learning · Deep learning · Modern natural language processing · Visual intelligence · Applied data analysis · Systems for data management and data science · Large-scale data science for real-world data · Parallel and high-performance computing · Data visualization",
@@ -109,7 +109,7 @@ export const education: PathEntry[] = [
     logo: "hes-so.svg",
     roles: [
       {
-        title: "BSc Computer Science",
+        title: "Bachelor in Computer Science and Communication Systems with Data Engineering major",
         dates: "2020 – 23",
         detail: "Data structures & algorithms · Databases · Computer systems · Networks · Web development",
         figure: { value: "5.6", label: "GPA / 6" },
