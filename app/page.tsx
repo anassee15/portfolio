@@ -1,9 +1,7 @@
 import { Contact } from "@/components/home/Contact";
 import { Cover } from "@/components/home/Cover";
-import { MainProject } from "@/components/home/MainProject";
-import { MoreWork } from "@/components/home/MoreWork";
 import { Profile } from "@/components/home/Profile";
-import { SelectedWork } from "@/components/home/SelectedWork";
+import { ProjectsTeaser } from "@/components/home/ProjectsTeaser";
 
 export default function HomePage() {
   return (
@@ -11,9 +9,7 @@ export default function HomePage() {
       <Cover />
       <div className="border-t border-rule">
         <Profile />
-        <MainProject />
-        <SelectedWork />
-        <MoreWork />
+        <ProjectsTeaser />
         <Contact />
       </div>
     </main>
