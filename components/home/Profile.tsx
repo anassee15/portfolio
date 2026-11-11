@@ -41,12 +41,14 @@ function Entry({ entry: { org, logo, logoDark = logo, emblem, roles } }: { entry
     "--logo-dark": `url(/logos/${logoDark})`,
   } as CSSProperties;
   return (
-    <li className="relative grid gap-x-6 gap-y-3 border-t border-rule py-5 sm:grid-cols-[104px_minmax(0,1fr)] lg:grid-cols-[112px_minmax(0,1fr)] lg:gap-x-8">
+    <li className="relative grid gap-x-6 gap-y-3 border-t border-rule py-5 sm:grid-cols-[104px_minmax(0,1fr)] lg:grid-cols-[10rem_minmax(0,1fr)] lg:gap-x-8">
       {/* On a phone the logo sits to the right of the name; from 640px it has its own column. */}
       <span
         aria-hidden
-        className={`absolute right-0 block w-[84px] bg-(image:--logo) bg-contain bg-right bg-no-repeat sm:static sm:w-[96px] sm:bg-left dark:bg-(image:--logo-dark) ${
-          emblem ? "top-3.5 h-[36px] sm:-mt-1 sm:h-[46px]" : "top-5 h-[22px] sm:mt-0.5 sm:h-[26px]"
+        className={`absolute right-0 block w-[84px] bg-(image:--logo) bg-contain bg-right bg-no-repeat sm:static sm:w-[96px] sm:bg-left lg:w-[9rem] dark:bg-(image:--logo-dark) ${
+          emblem
+            ? "top-3.5 h-[36px] sm:-mt-1 sm:h-[46px] lg:-mt-2 lg:h-[3.25rem]"
+            : "top-5 h-[22px] sm:mt-0.5 sm:h-[26px] lg:mt-0 lg:h-[2.125rem]"
         }`}
         style={logoVars}
       />
