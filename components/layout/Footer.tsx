@@ -15,9 +15,7 @@ export async function Footer() {
         {hasNotes && <Link href="/notes">Notes</Link>}
         <a href={site.cv}>CV</a>
       </span>
-      <span>
-        Set in Big Shoulders and Zen Kaku Gothic. Drawings in ink, sampled from noise. Updated {site.updated}.
-      </span>
+      <span>“A dropout will beat a genius through hard work.” Rock Lee</span>
     </footer>
   );
 }
