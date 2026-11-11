@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Section } from "@/components/layout/Section";
 import { education, experience, type PathEntry, type Role } from "@/data/profile";
 
@@ -33,20 +34,21 @@ const orgName = "font-display text-[1.5rem] leading-[1.05] font-extrabold";
  * to remember), so the page reads as one table. Below, each role is a plain top-to-bottom
  * block, and the roles of one organisation hang on a rail.
  */
-function Entry({ entry: { org, logo, emblem, roles } }: { entry: PathEntry }) {
+function Entry({ entry: { org, logo, logoDark = logo, emblem, roles } }: { entry: PathEntry }) {
   const grouped = roles.length > 1;
+  const logoVars = {
+    "--logo": `url(/logos/${logo})`,
+    "--logo-dark": `url(/logos/${logoDark})`,
+  } as CSSProperties;
   return (
     <li className="relative grid gap-x-6 gap-y-3 border-t border-rule py-5 sm:grid-cols-[104px_minmax(0,1fr)] lg:grid-cols-[112px_minmax(0,1fr)] lg:gap-x-8">
       {/* On a phone the logo sits to the right of the name; from 640px it has its own column. */}
       <span
         aria-hidden
-        className={`absolute right-0 block w-[84px] bg-ink [mask-position:right_center] [mask-repeat:no-repeat] [mask-size:contain] sm:static sm:w-[96px] sm:[mask-position:left_center] ${
+        className={`absolute right-0 block w-[84px] bg-(image:--logo) bg-contain bg-right bg-no-repeat sm:static sm:w-[96px] sm:bg-left dark:bg-(image:--logo-dark) ${
           emblem ? "top-3.5 h-[36px] sm:-mt-1 sm:h-[46px]" : "top-5 h-[22px] sm:mt-0.5 sm:h-[26px]"
         }`}
-        style={{
-          maskImage: `url(/logos/${logo})`,
-          WebkitMaskImage: `url(/logos/${logo})`,
-        }}
+        style={logoVars}
       />
       <div className="grid gap-y-4">
         <h3 className={`${orgName} pr-24 sm:pr-0 lg:hidden`}>{org}</h3>

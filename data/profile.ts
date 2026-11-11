@@ -33,8 +33,10 @@ export type Role = {
 /** One organisation, with every role held there (most recent first). */
 export type PathEntry = {
   org: string;
-  /** File in /public/logos, drawn in ink through a CSS mask. */
+  /** File in /public/logos, drawn in its own colours. */
   logo: string;
+  /** Light variant for dark mode, when the logo itself is too dark to read on it. */
+  logoDark?: string;
   /** The logo is a symbol rather than a wordmark: it is drawn taller. */
   emblem?: boolean;
   roles: Role[];
@@ -44,6 +46,7 @@ export const experience: PathEntry[] = [
   {
     org: "Groupe Mutuel",
     logo: "groupe-mutuel.svg",
+    logoDark: "groupe-mutuel-dark.svg",
     roles: [
       {
         title: "AI research engineer",
@@ -65,6 +68,7 @@ export const experience: PathEntry[] = [
   {
     org: "Scientific Visual",
     logo: "scientific-visual.png",
+    logoDark: "scientific-visual-dark.png",
     emblem: true,
     roles: [
       {
@@ -107,6 +111,7 @@ export const education: PathEntry[] = [
   {
     org: "HES-SO Neuchâtel",
     logo: "hes-so.svg",
+    logoDark: "hes-so-dark.svg",
     roles: [
       {
         title: "Bachelor in Computer Science and Communication Systems with Data Engineering major",
