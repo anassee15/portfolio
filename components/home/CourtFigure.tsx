@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { PLAYS } from "@/components/three/play";
 import { useCssVariables, useInView, useMediaQuery, usePageLoaded, usePrefersReducedMotion, useWebGL } from "@/lib/hooks";
+import { useThemeOverride } from "@/lib/theme";
 
 // three.js is only downloaded once the page has loaded and the court is close to the viewport.
 const CourtScene = dynamic(() => import("@/components/three/CourtScene"), { ssr: false });
@@ -70,9 +71,19 @@ const stillSrcSet = (theme: "light" | "dark") => `/court/court-${theme}-800.webp
  * so it is fetched first, at the right size.
  */
 function StillCourt() {
+  // The HTML follows the system; with a picked theme, the <head> script rewrites `media`
+  // (data-dark) before the image is chosen, and this matches it once hydrated.
+  const override = useThemeOverride();
+  const darkMedia = override ? (override === "dark" ? "all" : "not all") : "(prefers-color-scheme: dark)";
   return (
     <picture>
-      <source srcSet={stillSrcSet("dark")} sizes={STILL_SIZES} media="(prefers-color-scheme: dark)" />
+      <source
+        data-dark
+        srcSet={stillSrcSet("dark")}
+        sizes={STILL_SIZES}
+        media={darkMedia}
+        suppressHydrationWarning
+      />
       <img
         src="/court/court-light.webp"
         srcSet={stillSrcSet("light")}

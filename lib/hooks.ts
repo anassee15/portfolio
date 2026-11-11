@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { useTheme } from "@/lib/theme";
 
 export function useMediaQuery(query: string, serverValue = false) {
   const subscribe = useCallback(
@@ -23,9 +24,9 @@ export function usePrefersReducedMotion() {
   return useMediaQuery("(prefers-reduced-motion: reduce)", true);
 }
 
-/** Reads CSS custom properties from :root, refreshed when the colour scheme changes. */
+/** Reads CSS custom properties from :root, refreshed when the theme changes. */
 export function useCssVariables<T extends string>(names: readonly T[]): Record<T, string> | null {
-  const dark = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = useTheme();
   const [values, setValues] = useState<Record<T, string> | null>(null);
   const key = names.join(",");
 
@@ -36,7 +37,7 @@ export function useCssVariables<T extends string>(names: readonly T[]): Record<T
     ) as Record<T, string>;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing from the DOM, after paint
     setValues(read);
-  }, [key, dark]);
+  }, [key, theme]);
 
   return values;
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useCssVariables, useInView, useMediaQuery, usePageLoaded, usePrefersReducedMotion } from "@/lib/hooks";
+import { useCssVariables, useInView, usePageLoaded, usePrefersReducedMotion } from "@/lib/hooks";
+import { useTheme } from "@/lib/theme";
 
 // Same grid as the dot-screen files in /public/images, so the canvas takes over without a jump.
 const COLS = 46;
@@ -24,7 +25,7 @@ export function Portrait() {
   const visible = useInView(frame);
   const loaded = usePageLoaded();
   const reducedMotion = usePrefersReducedMotion();
-  const dark = useMediaQuery("(prefers-color-scheme: dark)");
+  const dark = useTheme() === "dark";
   const colors = useCssVariables(["paper", "ink"] as const);
   const [phase, setPhase] = useState<Phase>("ink");
   const [run, setRun] = useState(0);

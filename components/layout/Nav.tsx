@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/data/site";
 import { getNotes } from "@/lib/notes";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 export async function Nav() {
   // "Notes" shows up once a note is published (in development, drafts count).
@@ -19,6 +20,7 @@ export async function Nav() {
           {hasNotes && <Link href="/notes">Notes</Link>}
           <a href={site.cv}>CV</a>
         </div>
+        <ThemeToggle />
         <Link href="/#contact" className="bg-ink px-3 py-2 text-sm font-medium text-paper">
           Contact
         </Link>
