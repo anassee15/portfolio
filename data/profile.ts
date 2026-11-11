@@ -46,7 +46,7 @@ export const experience: PathEntry[] = [
     logo: "groupe-mutuel.svg",
     roles: [
       {
-        title: "AI researcher engineer",
+        title: "AI research engineer",
         dates: "2026 – 27",
         detail:
           "Multi-turn evaluation of a multi-agent assistant: simulated policyholders, LLM judges, pass^k. It gates feature rollouts in production. Now moving the assistant to open-weight models.",
