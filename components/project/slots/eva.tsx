@@ -7,16 +7,30 @@ import { HarnessArchitecture } from "@/components/project/eva/HarnessArchitectur
 import type { CaseSlots } from "../CaseLayout";
 import type { Project } from "@/data/projects";
 
+/** EVA itself: the architecture and the usage figures. */
 export function evaSlots(project: Project): CaseSlots {
   return {
     "the-system": {
-      before: (
-        <div className="mb-8">
+      after: (
+        <div className="mt-8">
           <EvaArchitecture />
         </div>
       ),
     },
-    "the-harness": {
+    results: {
+      before: (
+        <div className="mb-6">
+          <Figures figures={project.figures} source={project.source} />
+        </div>
+      ),
+    },
+  };
+}
+
+/** The evaluation harness: its stages, why pass^k, its figures and a replayed situation. */
+export function evaluationSlots(project: Project): CaseSlots {
+  return {
+    "the-system": {
       before: (
         <div className="mb-8">
           <HarnessArchitecture />

@@ -17,7 +17,7 @@ export function ProjectsTeaser() {
         <Link href="/projects" className="btn btn-primary">
           All projects <span aria-hidden>→</span>
         </Link>
-        <Link href="/projects/eva" className="link text-[0.9375rem]">
+        <Link href="/projects/agent-evaluation" className="link text-[0.9375rem]">
           Start with the main one
         </Link>
       </div>

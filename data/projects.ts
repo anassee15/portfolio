@@ -42,22 +42,40 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "agent-evaluation",
+    title: "Agentic evaluation",
+    pitch:
+      "The harness I built alone to prove EVA answers right, every time: simulated policyholders, calibrated judges, pass^k.",
+    context: "Groupe Mutuel",
+    year: "2026",
+    tier: "lead",
+    tags: ["agents", "llm", "evaluation"],
+    stack: ["Python", "LLM judges", "React / TS"],
+    figures: [
+      { value: "125", label: "situations, played across 30 products" },
+      { value: "219", label: "tests, built solo in ~6 weeks" },
+      { value: "4", label: "languages" },
+      { value: "8", label: "personas" },
+    ],
+    source: "Harness v2, Groupe Mutuel, Sep – Nov 2026. Run scores stay internal.",
+  },
+  {
     slug: "eva",
-    title: "Conversational agentic systems, and their evaluation",
+    title: "EVA, an agent in production",
     pitch:
       "EVA, the conversational agent of Groupe Mutuel, tells policyholders what their plan covers, in four languages.",
     context: "Groupe Mutuel",
     year: "2025 – 2027",
-    tier: "lead",
-    tags: ["agents", "llm", "evaluation"],
-    stack: ["Python", "FastAPI", "LLMs", "Langfuse", "Databricks", "Kubernetes", "React / TS"],
+    tier: "flagship",
+    tags: ["agents", "llm"],
+    stack: ["Python", "FastAPI", "Azure OpenAI", "Langfuse", "Databricks", "Kubernetes", "GitLab CI/CD"],
     figures: [
       { value: "115,000", label: "policyholders have used EVA" },
       { value: "400,000+", label: "have access to it in the app" },
       { value: "~18,000", label: "calls avoided in 6 months" },
       { value: "≈ CHF 360k", label: "estimated savings" },
     ],
-    source: "Groupe Mutuel, 2026. Savings are an internal estimate; run scores stay internal.",
+    source: "Groupe Mutuel, 2026. Savings are an internal estimate.",
   },
   {
     slug: "vision-voyager",

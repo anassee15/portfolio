@@ -4,10 +4,11 @@ import { projectDrawings } from "@/components/projects/drawings";
 import type { Project } from "@/data/projects";
 import type { CaseSlots } from "../CaseLayout";
 import { lbmSlots, roboticsSlots, unhatememeSlots, voyagerSlots } from "./demos";
-import { evaSlots } from "./eva";
+import { evaSlots, evaluationSlots } from "./eva";
 
 /** Per-project drawings, figures and demos, placed around the Markdown sections. */
 const slotsBySlug: Record<string, (project: Project) => CaseSlots> = {
+  "agent-evaluation": evaluationSlots,
   eva: evaSlots,
   "vision-voyager": voyagerSlots,
   unhatememe: unhatememeSlots,
