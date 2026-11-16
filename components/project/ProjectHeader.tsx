@@ -1,7 +1,16 @@
 import type { CaseHeader } from "@/lib/content";
 import type { Project } from "@/data/projects";
 
-export function ProjectHeader({ header, project }: { header: CaseHeader; project: Project }) {
+/** `children` go under the links, e.g. a project's key figures. */
+export function ProjectHeader({
+  header,
+  project,
+  children,
+}: {
+  header: CaseHeader;
+  project: Project;
+  children?: React.ReactNode;
+}) {
   return (
     <header className="pt-11 pb-2">
       <p className="meta">{header.meta}</p>
@@ -19,6 +28,7 @@ export function ProjectHeader({ header, project }: { header: CaseHeader; project
           ))}
         </p>
       )}
+      {children}
     </header>
   );
 }

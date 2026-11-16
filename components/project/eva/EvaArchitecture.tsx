@@ -25,7 +25,7 @@ const BRAIN_RIGHT: Block[] = [
 
 const STEERING: Block[] = [
   { icon: "trace", kicker: "observability", title: "Langfuse", text: "Every LLM call, agent and tool traced, with cost and latency.", mine: true },
-  { icon: "clipboard", kicker: "evaluation", title: "The harness", text: "Simulated policyholders, calibrated judges, pass^k. Gates feature rollouts.", mine: true },
+  { icon: "clipboard", kicker: "evaluation", title: "The harness", text: "Simulated policyholders, LLM judges, pass^k. Built to check every release.", mine: true },
   { icon: "databricks", kicker: "data", title: "Databricks", text: "Nightly ETL of the traces; questions grouped by topic with BERTopic.", mine: true },
   { icon: "review", kicker: "improvement", title: "Expert review", text: "Business experts review conversations and flag errors; dashboards in Power BI." },
 ];

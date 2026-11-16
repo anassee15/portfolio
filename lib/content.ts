@@ -16,11 +16,20 @@ export type CaseHeader = {
   lede: string;
 };
 
+/** A `### Heading` inside a section; slots can be placed around it by its id. */
+export type CaseSubsection = {
+  id: string;
+  label: string;
+  html: string;
+};
+
 /** A page is cut into sections at each `## Heading`; the heading becomes the section label. */
 export type CaseSection = {
   id: string;
   label: string;
+  /** The text before the first `###`. */
   html: string;
+  subsections: CaseSubsection[];
 };
 
 export type CaseStudy = {
@@ -41,14 +50,27 @@ function slugify(text: string) {
     .replace(/(^-|-$)/g, "");
 }
 
-function splitSections(body: string) {
-  const parts = body.split(/^## +(.+)$/m);
-  // parts = [intro, label1, body1, label2, body2, ...]; anything before the first heading is ignored.
+/** Splits at each heading of the given level; returns the text before the first one and the parts. */
+function splitAt(body: string, level: number) {
+  const parts = body.split(new RegExp(`^${"#".repeat(level)} +(.+)$`, "m"));
+  // parts = [intro, label1, body1, label2, body2, ...]
   const sections: { label: string; body: string }[] = [];
   for (let i = 1; i < parts.length; i += 2) {
     sections.push({ label: parts[i].trim(), body: parts[i + 1].trim() });
   }
-  return sections;
+  return { intro: parts[0].trim(), sections };
+}
+
+async function toSection({ label, body }: { label: string; body: string }): Promise<CaseSection> {
+  const { intro, sections } = splitAt(body, 3);
+  return {
+    id: slugify(label),
+    label,
+    html: await toHtml(intro),
+    subsections: await Promise.all(
+      sections.map(async (sub) => ({ id: slugify(sub.label), label: sub.label, html: await toHtml(sub.body) })),
+    ),
+  };
 }
 
 export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
@@ -60,13 +82,8 @@ export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
   }
 
   const { data, content } = matter(file);
-  const sections = await Promise.all(
-    splitSections(content).map(async ({ label, body }) => ({
-      id: slugify(label),
-      label,
-      html: await toHtml(body),
-    })),
-  );
+  // Anything before the first `##` is ignored.
+  const sections = await Promise.all(splitAt(content, 2).sections.map(toSection));
 
   return { header: data as CaseHeader, sections };
 }

@@ -52,7 +52,7 @@ export const experience: PathEntry[] = [
         title: "AI research engineer",
         dates: "2026 – 27",
         detail:
-          "Multi-turn evaluation of a multi-agent assistant: simulated policyholders, LLM judges, pass^k. It gates feature rollouts in production. Now moving the assistant to open-weight models.",
+          "Multi-turn evaluation of a multi-agent assistant: simulated policyholders, LLM judges, pass^k, built to check every release before it reaches policyholders. Now moving the assistant to open-weight models.",
         figure: { value: "Now", label: "until Feb 2027" },
         current: true,
       },

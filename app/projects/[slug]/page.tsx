@@ -29,10 +29,14 @@ export default async function ProjectPage({ params }: Props) {
   const study = await getCaseStudy(slug);
   if (!project || !study) notFound();
 
+  const slots = getCaseSlots(project, study.sections.map((section) => section.id));
+
   return (
     <main className="page-x">
-      <ProjectHeader header={study.header} project={project} />
-      <CaseLayout sections={study.sections} slots={getCaseSlots(project, study.sections.map((section) => section.id))} />
+      <ProjectHeader header={study.header} project={project}>
+        {slots.header?.after}
+      </ProjectHeader>
+      <CaseLayout sections={study.sections} slots={slots} />
       <NextProject project={getNextProject(slug)} />
     </main>
   );
