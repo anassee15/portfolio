@@ -51,13 +51,8 @@ export const projects: Project[] = [
     tier: "lead",
     tags: ["agents", "llm", "evaluation"],
     stack: ["Python", "Pydantic", "LLM judges", "React / TS"],
-    figures: [
-      { value: "219", label: "tests" },
-      { value: "~6 weeks", label: "to build v2, alone" },
-      { value: "3", label: "iterations in six months" },
-      { value: "7", label: "verdict types per claim, 2 critical" },
-    ],
-    source: "Git history and code of the harness, Apr – Nov 2026.",
+    figures: [],
+    source: "",
   },
   {
     slug: "eva",

@@ -32,15 +32,8 @@ export function evaSlots(project: Project): CaseSlots {
 }
 
 /** The evaluation harness: the pipeline, then one figure per design choice. */
-export function evaluationSlots(project: Project): CaseSlots {
+export function evaluationSlots(): CaseSlots {
   return {
-    header: {
-      after: (
-        <div className="mt-10">
-          <Figures figures={project.figures} source={project.source} />
-        </div>
-      ),
-    },
     "the-system": {
       after: (
         <div className="mt-8">

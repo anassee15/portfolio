@@ -32,12 +32,14 @@ export function ProjectCard({ project }: { project: Project }) {
             {project.title}
           </h2>
           <p className={`mt-2 max-w-[52ch] ${lead ? "" : "line-clamp-2"} text-[0.875rem] leading-snug text-ink-2`}>{project.pitch}</p>
-          <dl className="mt-auto flex flex-wrap gap-x-8 gap-y-3 pt-7">
-            {figures.map((figure) => (
-              <CardFigure key={figure.label} figure={figure} />
-            ))}
-          </dl>
-          <p className="meta mt-4">{project.tags.map((tag) => tagLabels[tag]).join(" · ")}</p>
+          {figures.length > 0 && (
+            <dl className="mt-auto flex flex-wrap gap-x-8 gap-y-3 pt-7">
+              {figures.map((figure) => (
+                <CardFigure key={figure.label} figure={figure} />
+              ))}
+            </dl>
+          )}
+          <p className={`meta ${figures.length > 0 ? "mt-4" : "mt-auto pt-7"}`}>{project.tags.map((tag) => tagLabels[tag]).join(" · ")}</p>
         </div>
         {Drawing && lead && (
           <div aria-hidden className="order-first self-center lg:order-none">
