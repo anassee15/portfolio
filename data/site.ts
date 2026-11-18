@@ -2,7 +2,7 @@ export const site = {
   name: "Anasse El Boudiri",
   role: "ML / AI Engineer",
   school: "EPFL",
-  roles: ["AI / ML Engineer", "Evaluation Engineer", "Forward Deployed Engineer"],
+  roles: ["AI / ML Engineer", "AI Scientist", "Evaluation Engineer", "Forward Deployed Engineer"],
   location: "Lausanne, Switzerland",
   tagline: "I build AI agents that run in production, and I make sure they actually work.",
   url: "https://anasse.vercel.app",
